@@ -1,0 +1,23 @@
+:root{
+	--bg:#222222;
+	--cardBg:#f2f2f2;
+	--txt:#eeeedd;
+	--tint01:#ed7411;
+	--tint010:#555555;
+	--tint02:red;
+	--tint03:#00aaaa;
+	--tint04:#ff00ff;
+	
+}
+		
+*{
+	background-color:var(--bg);
+	color: var(--txt);
+	font-family: lato, sans-serif;
+}
+
+.tst{
+	background-color: #ff0000;
+	font-size: 50px;
+	
+}
