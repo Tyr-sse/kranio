@@ -4,18 +4,20 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		$INSERTS$
-       
+		
         <title>Kranio</title>
     </head>
-    <body>
+    <body id="asd">
         <header>
-			<h1 class='title' style="text-align: center;">
-			KRANIO
-			</h1>
+			
 		</div>
         </header>
 		<div id='view' class="bord col">
-			<div id='field' class="bord row">
+			<h1 style="text-align: center; height: 20px;">
+				KRANIO
+			</h1>
+			<p id="teste"></p>
+			<div id="field" class="row f">
 				<div class='player col'>
 					<div class='player-info'>
 						<div class='player-nick'>
@@ -26,26 +28,26 @@
 						</div>
 					</div>
 					<div class='player-field col'>
-						<div class='field-card'>n</div>
-						<div class='field-card'>n</div>
-						<div class='field-card'>n</div>
-						<div class='field-card'>n</div>
+						<div class='card'>n</div>
+						<div class='card'>n</div>
+						<div class='card'>n</div>
+						<div class='card'>n</div>
 					</div>
 					
 				</div>
 				<div class='player col'>
 					<div class='player-info'>
 						<div class='player-nick'>
-							JOSE
+							John
 						</div>
 						<div class='player-lance'>
 							0
 						</div>
 					</div>
 					<div class='player-field col'>
-						<div k class='field-card'>k</div>
-						<div class='field-card'>n</div>
-						<div class='field-card'>n</div>
+						<div k class='card'>k</div>
+						<div class='card'>n</div>
+						<div class='card'>n</div>
 						
 					</div>
 					
@@ -53,14 +55,14 @@
 				<div class='player col'>
 					<div class='player-info'>
 						<div class='player-nick'>
-							Nick
+							Jesus
 						</div>
 						<div class='player-lance'>
 							0
 						</div>
 					</div>
 					<div class='player-field col'>
-						<div class='field-card'>n</div>
+						<div class='card'>n</div>
 						
 					</div>
 					
@@ -68,46 +70,46 @@
 				<div class='player col'>
 					<div class='player-info'>
 						<div class='player-nick'>
-							Nick
+							Marcos
 						</div>
 						<div class='player-lance'>
 							0
 						</div>
 					</div>
 					<div class='player-field col'>
-						<div class='field-card'>n</div>
-						<div class='field-card'>n</div>
+						<div class='card'>n</div>
+						<div class='card'>n</div>
 						
 					</div>
 					
 				</div>
 			
 			</div>
-			<div id='panel' class="row">
-				
-				<div class='hand'>
-					<div class='field-card' h>n</div>
-					<div class='field-card' h>n</div>
-					<div class='field-card' h>n</div>
-					<div class='field-card' h>n</div>
-				</div>
-				<div class='my-lance-wrapper'>
-					
-					<div id="lance">
-						<button class="btn-lance" onclik="lance( 1)">+</button>
-							00
-						<button class="btn-lance" onclik="lance(-1)">-</button>
+			<div id='panel' class="row" >
+				<div class='row ' style="background-color: #aabbcc00; width: 100%; display: flex; justify-content: space-evenly;">
+					<div id='hand' class="row" style="background-color: #aabbcc00;">
+						<div class='card' h u>k</div>
+						<div class='card' h>n</div>
+						<div class='card' h>n</div>
+						<div class='card' h>n</div>
+					</div>
+					<div class='col' style="background-color: #ff00ff00; width: 30%; justify-content: center;" >
+						<button class="btn-lance" onClick="lance( 1)">+</button>
+							<div id="lance-n">00</div>
+						<button class="btn-lance" onClick="lance(-1)">-</button>
+						<button class="btn-lance" onClick="lance(0)" style="width: 65px; margin: 2px;">Enviar</button>
 					</div>
 					
 					
 				</div>
 				
-			
+				
+
+				
 			</div>
-			
+			<div style="width: 20%; background-color: #ff0000; margin-top: auto;margin-bottom: auto; ">
+				
+			</div>
 		</div>
-		
-		
-		<button onclick="f()">BOTAO</button>
     </body>
 </html>

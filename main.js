@@ -65,8 +65,8 @@ const texts = {
 
 const resp_funcs = [
 	async ()=>{ //MATCH HTML
-		//RENDER MATCH
-		console.log('\n>>>>GENERATING MATCH COMPLETE HTML');
+		//RENDER MATCH	
+		console.log('\n>>>>GENERATING MATCH COMPLETE HTML [ ',inp,' ]');
 		let doc = [null,null,null];
 		addHTML();
 		addCSS();
@@ -123,80 +123,21 @@ const resp_funcs = [
 			let r = `
 				${html[0]}
 				<style>${doc[1]}</style>
-				<script>${doc[2]}</script> 
+				
+				
 				${html[1]}
+				<script>${doc[2]}</script> 
 				`;
-			console.log('TERMINOU')
+			//console.log('TERMINOU')
 			res.end(r);
 			
 			
-			
-			
-			
 		}
 		
 		
 	},
-	()=>{
-		
-		console.log('\n>>>>GENERATING MATCH HTML')
-		console.log('0');
-		
-		
-		
-		
-		
-		function X(){
-			console.log('RES');
-			
-		}
-		fs.readFile('./src/match.html', 
-			(errReading, data)=>{
-				let html = (errReading)?texts.error_reading_file:data.toString();
-				let L = html.split('$-$');
-				let fin = L.pop();
-				console.log('01');
-				
-				let m = fs.readFile('./src/match.css', 
-							(errReading, data)=>{
-								if(errReading) return 'middle';
-								
-								m = data.toString();
-								X();
-								//console.log('M>',m);
-								
-							}
-						);
-				
-				console.log('02 M>', m);
-				let mid = 'MID' ;
-				L.push(mid);
-				
-				L.push(fin);
-				//let beg = await 
-				
-				html = L.join('');
-				//console.log(html);
-				res.writeHead(200,{'Content-type':'text/html'});
-				res.end(html)
-				
-			}
-		);
-	},
+
 	
-	()=>{//MATCH CSS
-		console.log('MATCH CSS');
-		fs.readFile('src/match.css', 
-			(errReading, data)=>{
-				if(errReading) return;
-				console.log('READ: ',data.toString().split(' ').filter((inp)=>!(inp in ['','\n'] )).join('\n__') );
-				res.writeHead(200,{'Content-type':'text/css'});
-				res.write(data);
-				//console.log("________",data.toString());
-				res.end();
-			}
-		);
-	},
 
 ];
 
@@ -215,17 +156,26 @@ const endpoints = {
 	}
 	
 };
-
+let inp = '';
 const server = http.createServer(
 		(Req,Res)=>{
 			req = Req;
 			res = Res;
 			let u = req.url;
-			console.log("\n\n__________________\nRequest: \n URL: '"+u+"'");
+			
+			console.log("\n__________________REQ:\n---URL: '"+u+"'");
 			//console.group();
+			
+			for(let i=1; i<u.length;i++){
+				if(u[i]==='/'){
+					u = u.substring(0,i);
+					inp = u.substring(i,u.length);
+				} 
+			}
+			console.log('U>> ',u);
 			if(u in endpoints) endpoints[u]();
 			//console.endGroup();
-			console.log('\n__________________end req ');
+			console.log('\nEND REQ_____________________ ');
 			//console.log('%c'+Req.url,"color:yellow");
 		}
 	);
