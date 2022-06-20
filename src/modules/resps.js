@@ -32,4 +32,8 @@ exports.resp_funcs = [
 	},
 
 ];
+exports.exemple = {
+	macaco: 'assado',
+	cabra: 'cega'
 
+}

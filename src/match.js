@@ -1,3 +1,9 @@
+const domain = 'localhost:2200';
+let match_id = 1000;
+//fetch('https://example.com/', {
+	//method: 'GET',
+//	body: new FormData()
+  //})
 const players = [
 	['nick_01',11,"pswd001","ookonnnn"],
 	['nick_02',12,"pswd002","nnonkono"],
@@ -9,7 +15,24 @@ const players = [
 ]
 let cpl=0; //current player lance
 let cpi = 0;//current player index
-function lance(increment){
+async function lance(increment){
+	if(increment===1){
+		try{
+			fetch(`http://${domain}/match/${match_id}`)
+				.then(resp => resp.json())
+				.then(rjson => {
+					console.log('RSP >>>',rjson);
+
+					}
+				)
+			;
+
+		}catch(err){
+			console.log('err-fetch> ',err);
+		}
+
+	}
+
 	if(!increment){
 		console.log('X');
 		return;

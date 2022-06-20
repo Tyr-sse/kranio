@@ -2,6 +2,9 @@ const port = 2200
 const domain = 'localhost'
 const http = require('http');
 const url = require('url');
+const dom = require('./src/modules/dom.js');
+console.log('debug ',dom.updateN() );
+
 
 
 const os = require('os');
@@ -151,6 +154,8 @@ const endpoints = {
 		
 	},
 	"debug":()=>{
+
+
 		//DEBUG
 		
 	}
