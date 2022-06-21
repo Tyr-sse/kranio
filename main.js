@@ -3,7 +3,8 @@ const domain = 'localhost'
 const http = require('http');
 const url = require('url');
 const dom = require('./src/modules/dom.js');
-console.log('debug ',dom.updateN() );
+
+console.log('debug %d',dom.getN());
 
 
 
@@ -70,13 +71,14 @@ const resp_funcs = [
 	async ()=>{ //MATCH HTML
 		//RENDER MATCH	
 		console.log('\n>>>>GENERATING MATCH COMPLETE HTML [ ',inp,' ]');
-		let doc = [null,null,null];
+		let doc = [null,null,null,null];
 		addHTML();
 		addCSS();
+		addGlobalCSS();
 		addJS();
-		async function addHTML(){//MAKE HTML
+		async function addHTML(){//ADD HTML
 			//console.log('<getHTML> ');
-			return await fs.readFile('./src/match.html', 
+			return await fs.readFile('./src/pages/match/match.html', 
 				(errReading, data)=>{
 					let html = (errReading)?texts.error_reading_file:data.toString();
 					//console.log('</getHTML>');
@@ -85,9 +87,9 @@ const resp_funcs = [
 				}
 			);
 		}
-		async function addCSS(){//MAKE CSS
+		async function addCSS(){//ADD CSS
 			//console.log('<getCSS> ');
-			fs.readFile('./src/match.css', 
+			fs.readFile('./src/pages/match/match.css', 
 				(errReading, data)=>{
 					let css = (errReading)?'noCSS':data.toString();
 					//console.log('</getCSS> ');
@@ -96,12 +98,23 @@ const resp_funcs = [
 				}
 			);
 		}
-		async function addJS(){//MAKE JS
-			console.log('<getJS> ');
-			fs.readFile('./src/match.js', 
+		async function addGlobalCSS(){//ADD GLOBAL CSS
+			//console.log('<getCSS> ');
+			fs.readFile('./src/pages/global.css', 
+				(errReading, data)=>{
+					let css = (errReading)?'noGlobalCSS':data.toString();
+					//console.log('</getCSS> ');
+					addToDoc(css,3);
+					
+				}
+			);
+		}
+		async function addJS(){//ADD JS
+			//console.log('<getJS> ');
+			fs.readFile('./src/pages/match/match.js', 
 				(errReading, data)=>{
 					let js = (errReading)?'':data.toString();
-					console.log('</getJS> ');
+					//console.log('</getJS> ');
 					addToDoc(js,2);
 					
 				}
@@ -111,10 +124,9 @@ const resp_funcs = [
 		
 		
 		function addToDoc(content,pos){
-			console.log('OOF')
 			doc[pos] = content;
 			if(doc.some((it)=>it==null)) return;
-			console.log('DOC COMPLETE');
+			console.log('    >doc mount complete');
 			//GENERATE COMPLETE HTML
 			res.writeHead(200,{'Content-type':'text/html'});
 			
@@ -125,13 +137,14 @@ const resp_funcs = [
 			let html = doc[0].split("$INSERTS$");
 			let r = `
 				${html[0]}
-				<style>${doc[1]}</style>
+				<style>${doc[3]}\n${doc[1]}</style>
 				
 				
 				${html[1]}
 				<script>${doc[2]}</script> 
 				`;
 			//console.log('TERMINOU')
+			console.log('PAGE> ',r)
 			res.end(r);
 			
 			
@@ -139,6 +152,9 @@ const resp_funcs = [
 		
 		
 	},
+	() => {
+		console.log('RASD');
+	}
 
 	
 
@@ -147,7 +163,7 @@ const resp_funcs = [
 const endpoints = {
 	"/match": resp_funcs[0],
 	
-	"match/.j": resp_funcs[1],
+	"/loginj": resp_funcs[1],
 	
 	"login":()=>{
 		//RENDER PLUS
@@ -171,16 +187,16 @@ const server = http.createServer(
 			console.log("\n__________________REQ:\n---URL: '"+u+"'");
 			//console.group();
 			
-			for(let i=1; i<u.length;i++){
-				if(u[i]==='/'){
-					u = u.substring(0,i);
-					inp = u.substring(i,u.length);
-				} 
-			}
+			// for(let i=1; i<u.length;i++){
+				// if(u[i]==='/'){
+					// u = u.substring(0,i);
+					// inp = u.substring(i,u.length);
+				// } 
+			// }
 			console.log('U>> ',u);
 			if(u in endpoints) endpoints[u]();
 			//console.endGroup();
-			console.log('\nEND REQ_____________________ ');
+			console.log('\nEND REQ_____________________ \n');
 			//console.log('%c'+Req.url,"color:yellow");
 		}
 	);
