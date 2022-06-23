@@ -56,8 +56,9 @@ function f(){
 }
 
 let auth = 'pswd002';
-//updateScreen();
+updateScreen();
 function updateScreen(){
+	//getElementById('field').style.display = 'none';
 	console.log('UPDT')
 	//console.log(document.getElementsByClassName('f'));
 	console.log(document.getElementById("asd"));

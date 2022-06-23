@@ -4,7 +4,7 @@ const http = require('http');
 const url = require('url');
 const dom = require('./src/modules/dom.js');
 
-console.log('debug %d',dom.getN());
+console.log('debug %d', dom.getN());
 
 
 
@@ -19,7 +19,7 @@ var res = null;
 
 
 const texts = {
-	"match":`<!DOCTYPE html>
+	"match": `<!DOCTYPE html>
 		<html lang="en">
 			<head>
 				<meta charset="UTF-8" />
@@ -34,7 +34,8 @@ const texts = {
 			</body>
 		</html>
 	`,
-	"error_reading_file":`<!DOCTYPE html>
+
+	"error_reading_file": `<!DOCTYPE html>
 		<html lang="en">
 			<head>
 				<meta charset="UTF-8" />
@@ -67,69 +68,69 @@ const texts = {
 
 
 
-const resp_funcs = [
-	async ()=>{ //MATCH HTML
+const resp_funcs = {
+	"send_match_page": async () => { //MATCH HTML
 		//RENDER MATCH	
-		console.log('\n>>>>GENERATING MATCH COMPLETE HTML [ ',inp,' ]');
-		let doc = [null,null,null,null];
+		//console.log('\n>>>>GENERATING MATCH COMPLETE HTML [ ', inp, ' ]');
+		let doc = [null, null, null, null];
 		addHTML();
 		addCSS();
 		addGlobalCSS();
 		addJS();
-		async function addHTML(){//ADD HTML
+		async function addHTML() {//ADD HTML
 			//console.log('<getHTML> ');
-			return await fs.readFile('./src/pages/match/match.html', 
-				(errReading, data)=>{
-					let html = (errReading)?texts.error_reading_file:data.toString();
+			return await fs.readFile('./src/pages/match/match.html',
+				(errReading, data) => {
+					let html = (errReading) ? texts.error_reading_file : data.toString();
 					//console.log('</getHTML>');
-					addToDoc(html,0);
-					
+					addToDoc(html, 0);
+
 				}
 			);
 		}
-		async function addCSS(){//ADD CSS
+		async function addCSS() {//ADD CSS
 			//console.log('<getCSS> ');
-			fs.readFile('./src/pages/match/match.css', 
-				(errReading, data)=>{
-					let css = (errReading)?'noCSS':data.toString();
+			fs.readFile('./src/pages/match/match.css',
+				(errReading, data) => {
+					let css = (errReading) ? 'noCSS' : data.toString();
 					//console.log('</getCSS> ');
-					addToDoc(css,1);
-					
+					addToDoc(css, 1);
+
 				}
 			);
 		}
-		async function addGlobalCSS(){//ADD GLOBAL CSS
+		async function addGlobalCSS() {//ADD GLOBAL CSS
 			//console.log('<getCSS> ');
-			fs.readFile('./src/pages/global.css', 
-				(errReading, data)=>{
-					let css = (errReading)?'noGlobalCSS':data.toString();
+			fs.readFile('./src/pages/global.css',
+				(errReading, data) => {
+					let css = (errReading) ? 'noGlobalCSS' : data.toString();
 					//console.log('</getCSS> ');
-					addToDoc(css,3);
-					
+					addToDoc(css, 3);
+
 				}
 			);
 		}
-		async function addJS(){//ADD JS
+		async function addJS() {//ADD JS
 			//console.log('<getJS> ');
-			fs.readFile('./src/pages/match/match.js', 
-				(errReading, data)=>{
-					let js = (errReading)?'':data.toString();
+			fs.readFile('./src/pages/match/match.js',
+				(errReading, data) => {
+					let js = (errReading) ? '' : data.toString();
 					//console.log('</getJS> ');
-					addToDoc(js,2);
-					
+					addToDoc(js, 2);
+
 				}
 			);
 		}
-		
-		
-		
-		function addToDoc(content,pos){
+
+
+
+		function addToDoc(content, pos) {
 			doc[pos] = content;
-			if(doc.some((it)=>it==null)) return;
+			if (doc.some((it) => it == null)) return;
 			console.log('    >doc mount complete');
 			//GENERATE COMPLETE HTML
-			res.writeHead(200,{'Content-type':'text/html'});
-			
+			res.writeHead(200, { 'Content-type': 'text/html' });
+
 			//HEAD
 			//CSS
 			//JS
@@ -144,71 +145,183 @@ const resp_funcs = [
 				<script>${doc[2]}</script> 
 				`;
 			//console.log('TERMINOU')
-			console.log('PAGE> ',r)
+			console.log('PAGE> ', r)
 			res.end(r);
-			
-			
+
+
 		}
-		
-		
+
+
 	},
-	() => {
-		console.log('RASD');
+	"send_debug_page": async () => { //MATCH HTML
+		//RENDER MATCH	
+		//console.log('\n>>>>GENERATING DEBUG COMPLETE HTML [ ', inp, ' ]');
+		let doc = [null, null, null, null];
+		addHTML();
+		addCSS();
+		addGlobalCSS();
+		addJS();
+		async function addHTML() {//ADD HTML
+			//console.log('<getHTML> ');
+			return await fs.readFile('./src/pages/debug/debug.html',
+				(errReading, data) => {
+					let html = (errReading) ? texts.error_reading_file : data.toString();
+					//console.log('</getHTML>');
+					addToDoc(html, 0);
+
+				}
+			);
+		}
+		async function addCSS() {//ADD CSS
+			//console.log('<getCSS> ');
+			fs.readFile('./src/pages/debug/debug.css',
+				(errReading, data) => {
+					let css = (errReading) ? 'noCSS' : data.toString();
+					//console.log('</getCSS> ');
+					addToDoc(css, 1);
+
+				}
+			);
+		}
+		async function addGlobalCSS() {//ADD GLOBAL CSS
+			//console.log('<getCSS> ');
+			fs.readFile('./src/pages/global.css',
+				(errReading, data) => {
+					let css = (errReading) ? 'noGlobalCSS' : data.toString();
+					//console.log('</getCSS> ');
+					addToDoc(css, 3);
+
+				}
+			);
+		}
+		async function addJS() {//ADD JS
+			//console.log('<getJS> ');
+			fs.readFile('./src/pages/debug/debug.js',
+				(errReading, data) => {
+					let js = (errReading) ? '' : data.toString();
+					//console.log('</getJS> ');
+					addToDoc(js, 2);
+
+				}
+			);
+		}
+
+
+
+		function addToDoc(content, pos) {
+			doc[pos] = content;
+			if (doc.some((it) => it == null)) return;
+			console.log('    >doc mount complete');
+			//GENERATE COMPLETE HTML
+			res.writeHead(200, { 'Content-type': 'text/html' });
+
+			//HEAD
+			//CSS
+			//JS
+			//BODY
+			let html = doc[0].split("$INSERTS$");
+			let r = `
+				${html[0]}
+				<style>${doc[3]}\n${doc[1]}</style>
+				
+				
+				${html[1]}
+				<script>${doc[2]}</script> 
+				`;
+			//console.log('TERMINOU')
+			//console.log('PAGE> ',r)
+			res.end(r);
+
+
+		}
+
+
+	},
+	"terminate_match": async () => {
+		endpoint_inputs = "";
+		req.on('data',chunk=>{endpoint_inputs+=chunk});
+		req.on('end',()=>{
+			console.log("testando", JSON.parse(endpoint_inputs) );
+			//endpoint_inputs = JSON.parse(endpoint_inputs) 
+		});
+		
 	}
 
-	
 
-];
-
+};
+let endpoint_inputs = {};
 const endpoints = {
-	"/match": resp_funcs[0],
-	
-	"/loginj": resp_funcs[1],
-	
-	"login":()=>{
+	"/match": resp_funcs["send_match_page"],
+
+	"/debug": resp_funcs["send_debug_page"],
+
+
+	"/terminateMatch": resp_funcs["terminate_match"],
+
+
+	"login": () => {
 		//RENDER PLUS
-		
+
 	},
-	"debug":()=>{
+	"debug": () => {
 
 
 		//DEBUG
-		
+
 	}
-	
+
 };
-let inp = '';
+
 const server = http.createServer(
-		(Req,Res)=>{
-			req = Req;
-			res = Res;
-			let u = req.url;
-			
-			console.log("\n__________________REQ:\n---URL: '"+u+"'");
-			//console.group();
-			
-			// for(let i=1; i<u.length;i++){
-				// if(u[i]==='/'){
-					// u = u.substring(0,i);
-					// inp = u.substring(i,u.length);
-				// } 
-			// }
-			console.log('U>> ',u);
-			if(u in endpoints) endpoints[u]();
-			//console.endGroup();
-			console.log('\nEND REQ_____________________ \n');
-			//console.log('%c'+Req.url,"color:yellow");
-		}
-	);
+	(Req, Res) => {
+
+		req = Req;
+		res = Res;
+		let u = req.url;
+		console.log("\n__________________NEW REQ:\n---URL: '" + u + "'\n IN> ");
+		//console.log(req);
+		
+		if (!(u in endpoints)) return;
+		console.log(req.method);
+		endpoints[u]();
+		if(req.method !== 'POST') return;
+		//READ BODY
+		
+		//console.log('INPUTED BODY>>> ',endpoint_inputs);
+		
+		
+		endpoints[u]();
+
+		/*
+		const server = http.createServer((req, res) => {
+let data = '';
+req.on('data', chunk => {
+data += chunk;
+});
+req.on('end', () => {
+console.log(JSON.parse(data).todo); // 'Buy the milk'
+res.end();
+});
+});
+		
+		
+		*/
+
+
+
+		console.log('\nEND REQ_____________________ \n');
+		//console.log('%c'+Req.url,"color:yellow");
+	}
+);
 
 server.listen(port, (error) => {
 	console.log('initializing server...');
-	
-	if(error){
+
+	if (error) {
 		console.log("Error 500");
-	}else{
+	} else {
 		console.group();
-		console.log("%cServer is listening to port: "+port+'\n\n','color:red');		
-	
-	}	
+		console.log("Server is listening to port: " + port + '\n\n');
+
+	}
 });
