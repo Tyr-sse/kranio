@@ -1,6 +1,6 @@
 {
   "name": "http_server_01",
-  "version": "1.0.3.6",
+  "version": "1.0.3.7",
   "description": "An online card game, to be played by 3 to 5 players",
   "main": "app.js",
   "scripts": {

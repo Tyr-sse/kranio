@@ -163,6 +163,15 @@
 			margin-right: auto;
 
 		}
+
+
+		.q_input{
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+
+		}
+
 	</style>
 
 	<meta charset="UTF-8" />
@@ -179,14 +188,16 @@
 			<h2 style="margin:10px">1 - Faça um Programa que peça as
 				4 notas bimestrais e mostre a média
 			</h2>
-			<div class="col bord">
-
-
-				<input class="in q_01_input" type="text" placeholder="Nota 01" onchange="q01()" onkeydown="q01()" />
-				<input class="in q_01_input" type="text" placeholder="Nota 02" onchange="q01()" onkeydown="q01()" />
-				<input class="in q_01_input" type="text" placeholder="Nota 03" onchange="q01()" onkeydown="q01()" />
-				<input class="in q_01_input" type="text" placeholder="Nota 04" onchange="q01()" onkeydown="q01()" />
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<input class="in q_input q_01_input" type="text" placeholder="Nota 01" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
+				<input class="in q_input q_01_input" type="text" placeholder="Nota 02" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
+				<input class="in q_input q_01_input" type="text" placeholder="Nota 03" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
+				<input class="in q_input q_01_input" type="text" placeholder="Nota 04" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
 				<h4 id="resposta_q01"> Média </h4>
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center;">
+				<input class="in q_input q_02_input" type="text" placeholder="Nota 01" onchange="q02()" onkeyup="q02()" onkeydown="q02()" />
+				<h4 id="resposta_q02"> Área </h4>
 			</div>
 
 		</div>
@@ -197,18 +208,32 @@
 	// 	ATIVIDADE DE FIXAÇÃO 1
 
 	function q01() {
-		let inputs = document.getElementsByClassName(' q_01_input')
+		let inputs = document.getElementsByClassName(' q_01_input');
 		let r = 0;
-		console.log('____');
 		for (let i = 0; i < inputs.length; i++) {
 			let it = inputs.item(i).value;
 			if (it.length === 0) it = 0;
 			r += +it;
-			console.log('>', r)
 		};
 		r /= inputs.length;
 		document.getElementById('resposta_q01').textContent = 'Média:  ' + r;
 	}
+
+	function q02() {
+		let inputs = document.getElementsByClassName('q_02_input');
+		let r = inputs.item(0).value;
+		if(r.length===0) return;
+		r = r*r*Math.PI;
+		document.getElementById('resposta_q02').textContent = 'Área: ' + (r+'').substring(0,12);
+	}
+
+
+
+
+
+
+
+
 	// 1 - Faça um Programa que peça as
 	// 	4 notas bimestrais e mostre a média;
 
