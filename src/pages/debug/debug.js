@@ -2,38 +2,42 @@ const domain = 'localhost:2200';
 
 
 function isValidMatchId(match_id) {
-
+	let r = true;
 	if (
 		typeof (match_id) !== typeof ("string") || !match_id
-
 	) return false;
-	match_id.toUpperCase().split('').forEach(letter => {
-		console.log('   >', letter);
-	});
+	let mid = match_id.toUpperCase();
+	const algarisms = ['0','1','2','3','4','5','6','7','8','9'];
+	for(let i=0; i<mid.length;i++){
+		if(!algarisms.includes(mid[i])) return false;
+	}
+	return r;
 }
 
 
 function terminateFunc() {
-	console.log('____>>>>term> ' + document.getElementById('terminate_txtbx').value);
-	//guardas, validação front
 	let m_id = document.getElementById('terminate_txtbx').value;
-
-	if (isValidMatchId(m_id)) return;
-	console.log('wut')
+	// if (!isValidMatchId(m_id)) {
+	// 	//ENTRADA INVALIDA
+	// 	return;
+	// }
+	
+	console.log('Valido?', isValidMatchId(m_id));
+	if(!isValidMatchId(m_id)) return;
 	try {
 		console.log('')
 
 		// 'Content-Type',
 		// 	'text/plain;charset=UTF-8',
 		// 	'Accept',
-
+		console.log('>> ',m_id);
 		fetch(
 			`http://${domain}/terminateMatch`,
 			{
 				method: 'POST',
-				body: {a:2,b:4,m_id},
+				body: m_id,
 				headers: {
-					'Content-Type': 'application/text-json'
+					'Content-Type': 'application/text-plain'
 				}
 			}
 		)

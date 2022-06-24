@@ -240,9 +240,12 @@ const resp_funcs = {
 	"terminate_match": async () => {
 		endpoint_inputs = "";
 		req.on('data',chunk=>{endpoint_inputs+=chunk});
+		console.log('BFR END')
 		req.on('end',()=>{
-			console.log("testando", JSON.parse(endpoint_inputs) );
-			//endpoint_inputs = JSON.parse(endpoint_inputs) 
+			//console.log("testando", endpoint_inputs );
+			console.log('CALLING DOM > ',endpoint_inputs)
+			dom.terminate_match(endpoint_inputs.toUpperCase());
+			
 		});
 		
 	}
@@ -279,38 +282,10 @@ const server = http.createServer(
 		res = Res;
 		let u = req.url;
 		console.log("\n__________________NEW REQ:\n---URL: '" + u + "'\n IN> ");
-		//console.log(req);
-		
 		if (!(u in endpoints)) return;
-		console.log(req.method);
 		endpoints[u]();
-		if(req.method !== 'POST') return;
-		//READ BODY
+		console.log('\nEND REQ HEAD_____________________ \n');
 		
-		//console.log('INPUTED BODY>>> ',endpoint_inputs);
-		
-		
-		endpoints[u]();
-
-		/*
-		const server = http.createServer((req, res) => {
-let data = '';
-req.on('data', chunk => {
-data += chunk;
-});
-req.on('end', () => {
-console.log(JSON.parse(data).todo); // 'Buy the milk'
-res.end();
-});
-});
-		
-		
-		*/
-
-
-
-		console.log('\nEND REQ_____________________ \n');
-		//console.log('%c'+Req.url,"color:yellow");
 	}
 );
 

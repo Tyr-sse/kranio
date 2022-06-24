@@ -33,6 +33,45 @@ h3{
 	font-color: var(--txt);
 }
 
+.jg-title{
+	color: var(--tint01)
+
+}
+.jg-title[x]{
+	color: var(--tint01)
+
+}
+
+.jg{
+
+	background-color: var(--txt);
+	color: var(--bg);
+	height: 30px;
+	width: 30px;
+	border-radius: 12px;
+	
+}
+.jg[x]{
+
+	background-color: var(--tint01);
+	color: var(--bg);
+	height: 30px;
+	width: 30px;
+	border-radius: 12px;
+	
+}
+.jg[o]{
+
+	background-color: var(--tint03);
+	color: var(--bg);
+	height: 30px;
+	width: 30px;
+	border-radius: 12px;
+	
+}
+
+
+
 .in{
 	border-color: var(--softBg);
 	border-style: solid;
