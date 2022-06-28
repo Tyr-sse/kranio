@@ -60,6 +60,13 @@
 			border-radius: 12px;
 
 		}
+		
+		.fold{
+			display: none;
+		
+		}
+		
+		
 
 		.jg[x] {
 
@@ -182,32 +189,155 @@
 </head>
 
 <body class="bord" style="width:95%;">
-	<div class="col bord" style="min-height: 800px">
+	<div class="col bord" style="min-height: 800px; width: 100%">
 		<h1>Atividades</h1>
-		<div class="col bord" style="min-height: 100px; min-width: 400px; margin:10px">
-			<h2 style="margin:10px">1 - Faça um Programa que peça as
-				4 notas bimestrais e mostre a média
-			</h2>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<input class="in q_input q_01_input" type="text" placeholder="Nota 01" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
-				<input class="in q_input q_01_input" type="text" placeholder="Nota 02" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
-				<input class="in q_input q_01_input" type="text" placeholder="Nota 03" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
-				<input class="in q_input q_01_input" type="text" placeholder="Nota 04" onchange="q01()" onkeydown="q01()" onkeyup="q01()" />
-				<h4 id="resposta_q01"> Média </h4>
+		
+		
+		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px;">
+			<h2>Exercício de fixação 01</h2>
+			<div style="margin:10px;">
+			1 - Faça um Programa que peça as
+			4 notas bimestrais e mostre a média
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center;">
-				<input class="in q_input q_02_input" type="text" placeholder="Nota 01" onchange="q02()" onkeyup="q02()" onkeydown="q02()" />
-				<h4 id="resposta_q02"> Área </h4>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Notas:</h2>
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 01" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 02" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 03" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 04" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				<h4 id="resposta_ex_01_q01"> Média </h4>
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+			2 - Faça um Programa que <br>
+			peça o raio de um círculo,<br>
+			calcule e mostre sua área;
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Área da <br>Circunferência:</h2>
+				<input class="in q_input q_02_input" type="number" placeholder="Raio" onchange="ex_01_q02()" onkeyup="ex_01_q02()" onkeydown="ex_01_q02()" />
+				<h4 id="resposta_ex_01_q02"> Área </h4>
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+				3 - Faça um Programa que peça a temperatura 
+				em graus Fahrenheit, transforme e mostre a 
+				temperatura em graus Celsius.
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Conversor</h2>
+				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex_01_q03(true)" onkeyup="ex_01_q03(true)" onkeydown="ex_01_q03(true)" />
+				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex_01_q03(false)" onkeyup="ex_01_q03(false)" onkeydown="ex_01_q03(false)" />
+				
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+				4 - Faça um programa que calcule e mostre a area e o
+				per  metro de uma sala retangular cujas medidas são 
+				fornecidas	pelo usuário;
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Informações<br>Geométricas</h2>
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<h4 id="area"> Área: </h4>
+				<h4 id="perim"> Perímetro: </h4>	
 			</div>
 
+
+			<div style="margin:10px; width: 100%">
+				5 - Escreva um programa para ler as dimensões
+				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias para cobrir o chão da cozinha.
+				Cada caixa de azulejos possui 2, 5 m2.
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Informações<br>Geométricas</h2>
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<h4 id="area"> Área: </h4>
+				<h4 id="perim"> Perímetro: </h4>	
+			</div>
+
+
 		</div>
+		
+		
+		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px">
+			<h2>Exercício de fixação 02</h2>
+			<div style="margin:10px;">
+			1 - Faça um Programa que peça as
+			4 notas bimestrais e mostre a média
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Notas:</h2>
+				<input id="input01_ex01_q01" class="in q_input" type="number" placeholder="Nota 01" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				<input id="input02_ex01_q01" class="in q_input" type="number" placeholder="Nota 02" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
+				
+				<h4 id="resposta_01_ex_02_q01"> Média </h4>
+				<h4 id="resposta_02_ex_02_q01"> Média </h4>
+				
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+			2 - Faça um Programa que <br>
+			peça o raio de um círculo,<br>
+			calcule e mostre sua área;
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Área da <br>Circunferência:</h2>
+				<input class="in q_input q_02_input" type="number" placeholder="Raio" onchange="ex_01_q02()" onkeyup="ex_01_q02()" onkeydown="ex_01_q02()" />
+				<h4 id="resposta_ex_01_q02"> Área </h4>
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+				3 - Faça um Programa que peça a temperatura 
+				em graus Fahrenheit, transforme e mostre a 
+				temperatura em graus Celsius.
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Conversor</h2>
+				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex_01_q03(true)" onkeyup="ex_01_q03(true)" onkeydown="ex_01_q03(true)" />
+				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex_01_q03(false)" onkeyup="ex_01_q03(false)" onkeydown="ex_01_q03(false)" />
+				
+			</div>
+			
+			<div style="margin:10px; width: 100%">
+				4 - Faça um programa que calcule e mostre a area e o
+				per  metro de uma sala retangular cujas medidas são 
+				fornecidas	pelo usuário;
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Informações<br>Geométricas</h2>
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<h4 id="area"> Área: </h4>
+				<h4 id="perim"> Perímetro: </h4>	
+			</div>
+
+
+			<div style="margin:10px; width: 100%">
+				5 - Escreva um programa para ler as dimensões
+				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias para cobrir o chão da cozinha.
+				Cada caixa de azulejos possui 2, 5 m2.
+			</div>
+			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Informações<br>Geométricas</h2>
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<h4 id="area"> Área: </h4>
+				<h4 id="perim"> Perímetro: </h4>	
+			</div>
+
+
+		</div>
+		
 
 
 </body>
 <script>
 	// 	ATIVIDADE DE FIXAÇÃO 1
 
-	function q01() {
+	function ex_01_q01() {
 		let inputs = document.getElementsByClassName(' q_01_input');
 		let r = 0;
 		for (let i = 0; i < inputs.length; i++) {
@@ -216,16 +346,58 @@
 			r += +it;
 		};
 		r /= inputs.length;
-		document.getElementById('resposta_q01').textContent = 'Média:  ' + r;
+		document.getElementById('resposta_ex_01_q01').textContent = 'Média:  ' + r;
 	}
 
-	function q02() {
+	function ex_01_q02() {
 		let inputs = document.getElementsByClassName('q_02_input');
 		let r = inputs.item(0).value;
 		if(r.length===0) return;
 		r = r*r*Math.PI;
-		document.getElementById('resposta_q02').textContent = 'Área: ' + (r+'').substring(0,12);
+		document.getElementById('resposta_ex_01_q02').textContent = 'Área: ' + (r+'').substring(0,12);
 	}
+	
+	function ex_01_q03(far) {
+		let r =0
+		if(!far) {r = 5.0 * (( +document.getElementById('fah').value - 32.0) / 9.0);}
+		else{ r = (document.getElementById('cel').value * 9.0/5.0) + 32.0}
+		document.getElementById(far?'fah':'cel').value = (r+'').substring(0,12);
+		
+	}
+	
+	function ex_01_q04() {
+		let l = +document.getElementById('larg').value;
+		let c = +document.getElementById('comp').value;
+		document.getElementById('area').textContent= 'Área: '+(l*c);
+		document.getElementById('perim').textContent= 'Perímetro: '+2*(l+c);
+	}
+	
+	function ex_01_q05() {
+		let l = +document.getElementById('larg').value;
+		let c = +document.getElementById('comp').value;
+		document.getElementById('area').textContent= 'Área: '+(l*c);
+		document.getElementById('perim').textContent= 'Perímetro: '+2*(l+c);
+	}
+// -------------------------------------------------------------------------------------------------------------------------------
+
+	function ex_02_q01(){
+		
+		function calcula_media(num_01, num_02){
+			if(isNaN(Number(numberToCheck))) return 0;
+			return (num_01+num_02)/2;
+		}
+		function calcula_media(num_01, num_02){
+			if(isNaN(Number(numberToCheck))) return 0;
+			return num_01*num_02;
+		}
+		
+		
+	
+	}
+
+
+
+
 
 
 
@@ -271,6 +443,8 @@ calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inte
 
 
 */
+
+
 
 
 
