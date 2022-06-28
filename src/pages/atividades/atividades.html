@@ -43,50 +43,18 @@
 			color: var(--tint01);
 		}
 
-		.jg-title {
-			color: var(--tint01)
-		}
 
-		.jg-title[x] {
-			color: var(--tint01)
-		}
 
-		.jg {
 
-			background-color: var(--txt);
-			color: var(--bg);
-			height: 30px;
-			width: 30px;
-			border-radius: 12px;
 
-		}
-		
-		.fold{
+		.fold {
 			display: none;
-		
-		}
-		
-		
-
-		.jg[x] {
-
-			background-color: var(--tint01);
-			color: var(--bg);
-			height: 30px;
-			width: 30px;
-			border-radius: 12px;
 
 		}
 
-		.jg[o] {
 
-			background-color: var(--tint03);
-			color: var(--bg);
-			height: 30px;
-			width: 30px;
-			border-radius: 12px;
 
-		}
+
 
 
 
@@ -164,21 +132,12 @@
 			align-items: center;
 		}
 
-
-		.row-item {
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-
-		.q_input{
+		.q_input {
 			margin-left: auto;
 			margin-right: auto;
 			width: 60%;
 
 		}
-
 	</style>
 
 	<meta charset="UTF-8" />
@@ -191,153 +150,104 @@
 <body class="bord" style="width:95%;">
 	<div class="col bord" style="min-height: 800px; width: 100%">
 		<h1>Atividades</h1>
-		
-		
+
+
 		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px;">
 			<h2>Exercício de fixação 01</h2>
 			<div style="margin:10px;">
-			1 - Faça um Programa que peça as
-			4 notas bimestrais e mostre a média
+				1 - Faça um Programa que peça as
+				4 notas bimestrais e mostre a média
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
 				<h2> Notas:</h2>
-				<input class="in q_input q_01_input" type="number" placeholder="Nota 01" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				<input class="in q_input q_01_input" type="number" placeholder="Nota 02" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				<input class="in q_input q_01_input" type="number" placeholder="Nota 03" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				<input class="in q_input q_01_input" type="number" placeholder="Nota 04" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				<h4 id="resposta_ex_01_q01"> Média </h4>
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 01" onchange="ex01_q01()"
+					onkeydown="ex01_q01()" onkeyup="ex01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 02" onchange="ex01_q01()"
+					onkeydown="ex01_q01()" onkeyup="ex01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 03" onchange="ex01_q01()"
+					onkeydown="ex01_q01()" onkeyup="ex01_q01()" />
+				<input class="in q_input q_01_input" type="number" placeholder="Nota 04" onchange="ex01_q01()"
+					onkeydown="ex01_q01()" onkeyup="ex01_q01()" />
+				<h4 id="resposta_ex01_q01"> Média </h4>
 			</div>
-			
-			<div style="margin:10px; width: 100%">
-			2 - Faça um Programa que <br>
-			peça o raio de um círculo,<br>
-			calcule e mostre sua área;
+
+			<div style="margin:10px; width: 70%">
+				2 - Faça um Programa que
+				peça o raio de um círculo,
+				calcule e mostre sua área;
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
 				<h2> Área da <br>Circunferência:</h2>
-				<input class="in q_input q_02_input" type="number" placeholder="Raio" onchange="ex_01_q02()" onkeyup="ex_01_q02()" onkeydown="ex_01_q02()" />
-				<h4 id="resposta_ex_01_q02"> Área </h4>
+				<input class="in q_input q_02_input" type="number" placeholder="Raio" onchange="ex01_q02()"
+					onkeyup="ex01_q02()" onkeydown="ex01_q02()" />
+				<h4 id="resposta_ex01_q02"> Área </h4>
 			</div>
-			
-			<div style="margin:10px; width: 100%">
-				3 - Faça um Programa que peça a temperatura 
-				em graus Fahrenheit, transforme e mostre a 
+
+			<div style="margin:10px; width: 70%">
+				3 - Faça um Programa que peça a temperatura
+				em graus Fahrenheit, transforme e mostre a
 				temperatura em graus Celsius.
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
 				<h2>Conversor</h2>
-				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex_01_q03(true)" onkeyup="ex_01_q03(true)" onkeydown="ex_01_q03(true)" />
-				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex_01_q03(false)" onkeyup="ex_01_q03(false)" onkeydown="ex_01_q03(false)" />
-				
+				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex01_q03(true)"
+					onkeyup="ex01_q03(true)" onkeydown="ex01_q03(true)" />
+				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex01_q03(false)"
+					onkeyup="ex01_q03(false)" onkeydown="ex01_q03(false)" />
+
 			</div>
-			
-			<div style="margin:10px; width: 100%">
+
+			<div style="margin:10px; width: 70%">
 				4 - Faça um programa que calcule e mostre a area e o
-				per  metro de uma sala retangular cujas medidas são 
-				fornecidas	pelo usuário;
+				perimetro de uma sala retangular cujas medidas são
+				fornecidas pelo usuário;
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
 				<h2>Informações<br>Geométricas</h2>
-				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex01_q04()"
+					onkeyup="ex01_q04()" onkeydown="ex01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex01_q04()"
+					onkeyup="ex01_q04()" onkeydown="ex01_q04()" />
 				<h4 id="area"> Área: </h4>
-				<h4 id="perim"> Perímetro: </h4>	
+				<h4 id="perim"> Perímetro: </h4>
 			</div>
 
 
-			<div style="margin:10px; width: 100%">
+			<div style="margin:10px; max-width: 70%">
 				5 - Escreva um programa para ler as dimensões
-				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias para cobrir o chão da cozinha.
+				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias
+				para cobrir o chão da cozinha.
 				Cada caixa de azulejos possui 2, 5 m2.
 			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2>Informações<br>Geométricas</h2>
-				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<h4 id="area"> Área: </h4>
-				<h4 id="perim"> Perímetro: </h4>	
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Dimensões<br>Cozinha</h2>
+				<input id="input01_ex01_05" class="in q_input" type="number" placeholder="Largura"
+					onchange="ex01_q05()" onkeyup="ex01_q05()" onkeydown="ex01_q05()" />
+				<input id="input02_ex01_05" class="in q_input" type="number" placeholder="Comprimento"
+					onchange="ex01_q05()" onkeyup="ex01_q05()" onkeydown="ex01_q05()" />
+				<h3>Quantidade de <br>caixas de Azulejos: </h3> 
+				<h4 id="output01_ex01_q01">?</h4>
+
 			</div>
 
 
 		</div>
-		
-		
-		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px">
-			<h2>Exercício de fixação 02</h2>
-			<div style="margin:10px;">
-			1 - Faça um Programa que peça as
-			4 notas bimestrais e mostre a média
-			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2> Notas:</h2>
-				<input id="input01_ex01_q01" class="in q_input" type="number" placeholder="Nota 01" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				<input id="input02_ex01_q01" class="in q_input" type="number" placeholder="Nota 02" onchange="ex_01_q01()" onkeydown="ex_01_q01()" onkeyup="ex_01_q01()" />
-				
-				<h4 id="resposta_01_ex_02_q01"> Média </h4>
-				<h4 id="resposta_02_ex_02_q01"> Média </h4>
-				
-			</div>
-			
-			<div style="margin:10px; width: 100%">
-			2 - Faça um Programa que <br>
-			peça o raio de um círculo,<br>
-			calcule e mostre sua área;
-			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2> Área da <br>Circunferência:</h2>
-				<input class="in q_input q_02_input" type="number" placeholder="Raio" onchange="ex_01_q02()" onkeyup="ex_01_q02()" onkeydown="ex_01_q02()" />
-				<h4 id="resposta_ex_01_q02"> Área </h4>
-			</div>
-			
-			<div style="margin:10px; width: 100%">
-				3 - Faça um Programa que peça a temperatura 
-				em graus Fahrenheit, transforme e mostre a 
-				temperatura em graus Celsius.
-			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2>Conversor</h2>
-				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex_01_q03(true)" onkeyup="ex_01_q03(true)" onkeydown="ex_01_q03(true)" />
-				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex_01_q03(false)" onkeyup="ex_01_q03(false)" onkeydown="ex_01_q03(false)" />
-				
-			</div>
-			
-			<div style="margin:10px; width: 100%">
-				4 - Faça um programa que calcule e mostre a area e o
-				per  metro de uma sala retangular cujas medidas são 
-				fornecidas	pelo usuário;
-			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2>Informações<br>Geométricas</h2>
-				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<h4 id="area"> Área: </h4>
-				<h4 id="perim"> Perímetro: </h4>	
-			</div>
 
 
-			<div style="margin:10px; width: 100%">
-				5 - Escreva um programa para ler as dimensões
-				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias para cobrir o chão da cozinha.
-				Cada caixa de azulejos possui 2, 5 m2.
-			</div>
-			<div class="bord" style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
-				<h2>Informações<br>Geométricas</h2>
-				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex_01_q04()" onkeyup="ex_01_q04()" onkeydown="ex_01_q04()" />
-				<h4 id="area"> Área: </h4>
-				<h4 id="perim"> Perímetro: </h4>	
-			</div>
 
 
-		</div>
-		
 
 
 </body>
 <script>
 	// 	ATIVIDADE DE FIXAÇÃO 1
 
-	function ex_01_q01() {
+	function ex01_q01() {
 		let inputs = document.getElementsByClassName(' q_01_input');
 		let r = 0;
 		for (let i = 0; i < inputs.length; i++) {
@@ -346,54 +256,129 @@
 			r += +it;
 		};
 		r /= inputs.length;
-		document.getElementById('resposta_ex_01_q01').textContent = 'Média:  ' + r;
+		document.getElementById('resposta_ex01_q01').textContent = 'Média:  ' + r;
 	}
 
-	function ex_01_q02() {
+	function ex01_q02() {
 		let inputs = document.getElementsByClassName('q_02_input');
 		let r = inputs.item(0).value;
-		if(r.length===0) return;
-		r = r*r*Math.PI;
-		document.getElementById('resposta_ex_01_q02').textContent = 'Área: ' + (r+'').substring(0,12);
+		if (r.length === 0) return;
+		r = r * r * Math.PI;
+		document.getElementById('resposta_ex01_q02').textContent = 'Área: ' + (r + '').substring(0, 12);
 	}
-	
-	function ex_01_q03(far) {
-		let r =0
-		if(!far) {r = 5.0 * (( +document.getElementById('fah').value - 32.0) / 9.0);}
-		else{ r = (document.getElementById('cel').value * 9.0/5.0) + 32.0}
-		document.getElementById(far?'fah':'cel').value = (r+'').substring(0,12);
-		
+
+	function ex01_q03(far) {
+		let r = 0
+		if (!far) { r = 5.0 * ((+document.getElementById('fah').value - 32.0) / 9.0); }
+		else { r = (document.getElementById('cel').value * 9.0 / 5.0) + 32.0 }
+		document.getElementById(far ? 'fah' : 'cel').value = (r + '').substring(0, 12);
+
 	}
-	
-	function ex_01_q04() {
+
+	function ex01_q04() {
 		let l = +document.getElementById('larg').value;
 		let c = +document.getElementById('comp').value;
-		document.getElementById('area').textContent= 'Área: '+(l*c);
-		document.getElementById('perim').textContent= 'Perímetro: '+2*(l+c);
+		document.getElementById('area').textContent = 'Área: ' + (l * c);
+		document.getElementById('perim').textContent = 'Perímetro: ' + 2 * (l + c);
 	}
+
+	function ex01_q05() {
+		const box_size = 2.5;
+		let l = +document.getElementById('input01_ex01_05').value;
+		let c = +document.getElementById('input02_ex01_05').value;
+		document.getElementById('output01_ex01_q01').textContent = (''+(l * c)/box_size).substring(0, 20);
+
+	}
+
+
+
+	// -------------------------------------------------------------------------------------------------------------------------------
+	/*
+		// 1 - Faça um Programa que peça as
+		// 	4 notas bimestrais e mostre a média;
 	
-	function ex_01_q05() {
-		let l = +document.getElementById('larg').value;
-		let c = +document.getElementById('comp').value;
-		document.getElementById('area').textContent= 'Área: '+(l*c);
-		document.getElementById('perim').textContent= 'Perímetro: '+2*(l+c);
-	}
-// -------------------------------------------------------------------------------------------------------------------------------
-
-	function ex_02_q01(){
-		
-		function calcula_media(num_01, num_02){
-			if(isNaN(Number(numberToCheck))) return 0;
-			return (num_01+num_02)/2;
-		}
-		function calcula_media(num_01, num_02){
-			if(isNaN(Number(numberToCheck))) return 0;
-			return num_01*num_02;
-		}
-		
+	// 	2 - Faça um Programa que peça o raio 
+	// de um círculo, calcule e mostre sua área;
+	
+	// 	3 - Faça um Programa que peça a temperatura 
+	// em graus Fahrenheit, transforme e mostre a 
+	// temperatura em graus Celsius.
+	
+	// 		C = 5 * ((F - 32) / 9);
+	
+	// 	4 - Faça um programa que calcule e mostre a  area e o per  metro de uma sala retangular cujas medidas são fornecidas pelo usuário;
+	
+	// 	5 - Escreva um programa para ler as dimensões de uma cozinha retangular,
+	 em seguida calcular e escrever a quantidade de caixas de azulejos necessarias
+	 para cobrir o chão da cozinha.
+	//Cada caixa de azulejos possui 2, 5 m2.
 		
 	
-	}
+	
+	
+	
+		function ex_02_q01() {
+	
+			function calcula_media(num_01, num_02) {
+				if (isNaN(Number(numberToCheck))) return 0;
+				return (num_01 + num_02) / 2;
+			}
+			function calcula_media(num_01, num_02) {
+				if (isNaN(Number(numberToCheck))) return 0;
+				return num_01 * num_02;
+			}
+	
+	
+	
+		}
+	
+	
+	
+	
+	
+	
+	
+		
+		ATIVIDADE DE FIXAÇÃO 2
+		
+		Realizar as questões abaixo:
+		
+		1 - Faça um programa que leia 2 números inteiros, calcule e exiba a média aritmética e o produto dos números. O seu programa deve, obrigatoriamente, utilizar as seguintes funções feitas por você:
+		
+		calcula_media(): recebe 2 números inteiros como parâmetros e retorne a média dos números;
+		calcula_produto(): recebe 2 números inteiros como parâmetros e retorna o produto dos números;
+		
+		2 - Faça um programa que calcule e imprima a média ponderada de um aluno. Inicialmente, o programa deverá ler o peso da primeira prova e o peso da segunda prova (ambos inteiros). A seguir, o programa deverá ler os seguintes dados do aluno: matrícula (inteiro), nota da primeira prova e nota da segunda prova (ambas reais). Por último, o programa deve mostrar a matricula do aluno seguida da sua média. O seu programa deve, obrigatoriamente, utilizar a seguinte função feita por você:
+		
+		calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inteiros) como parâmetros e retorna a média ponderada dos valores;
+		
+		3 - Altere o programa do exercício 2 para que ele utilize a função calcula_produto do exercício 1 no cálculo da média ponderada;
+		
+		4 - Altere o programa do exercício 3 para que ele processe os dados de 2 alunos ao invés de apenas 1;
+		
+		5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde. O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
+		
+		- INSS: 10% do valor bruto;
+		- FGTS: 8%;
+		- Plano de Saúde: R$100,00
+		
+		6 - Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+		-> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+		-> A mensagem "Reprovado", se a média for menor do que sete;
+		-> A mensagem "Aprovado com Distinção", se a média for igual a dez.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		*/
 
 
 
@@ -401,71 +386,7 @@
 
 
 
-/*
 
-ATIVIDADE DE FIXAÇÃO 2
-
-Realizar as questões abaixo:
-
-1 - Faça um programa que leia 2 números inteiros, calcule e exiba a média aritmética e o produto dos números. O seu programa deve, obrigatoriamente, utilizar as seguintes funções feitas por você:
-
-calcula_media(): recebe 2 números inteiros como parâmetros e retorne a média dos números; 
-calcula_produto(): recebe 2 números inteiros como parâmetros e retorna o produto dos números;
-
-2 - Faça um programa que calcule e imprima a média ponderada de um aluno. Inicialmente, o programa deverá ler o peso da primeira prova e o peso da segunda prova (ambos inteiros). A seguir, o programa deverá ler os seguintes dados do aluno: matrícula (inteiro), nota da primeira prova e nota da segunda prova (ambas reais). Por último, o programa deve mostrar a matricula do aluno seguida da sua média. O seu programa deve, obrigatoriamente, utilizar a seguinte função feita por você:
-
-calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inteiros) como parâmetros e retorna a média ponderada dos valores;
-
-3 - Altere o programa do exercício 2 para que ele utilize a função calcula_produto do exercício 1 no cálculo da média ponderada;
-
-4 - Altere o programa do exercício 3 para que ele processe os dados de 2 alunos ao invés de apenas 1;
-
-5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde. O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
-
-- INSS: 10% do valor bruto;
-- FGTS: 8%;
-- Plano de Saúde: R$100,00
-
-6 - Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
--> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
--> A mensagem "Reprovado", se a média for menor do que sete;
--> A mensagem "Aprovado com Distinção", se a média for igual a dez.
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-
-
-
-
-
-	// 1 - Faça um Programa que peça as
-	// 	4 notas bimestrais e mostre a média;
-
-// 	2 - Faça um Programa que peça o raio 
-// de um círculo, calcule e mostre sua área;
-
-// 	3 - Faça um Programa que peça a temperatura 
-// em graus Fahrenheit, transforme e mostre a 
-// temperatura em graus Celsius.
-
-// 		C = 5 * ((F - 32) / 9);
-
-// 	4 - Faça um programa que calcule e mostre a  area e o per  metro de uma sala retangular cujas medidas são fornecidas pelo usuário;
-
-// 	5 - Escreva um programa para ler as dimensões de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias para cobrir o chão da cozinha.
-//Cada caixa de azulejos possui 2, 5 m2.
 
 	/*
 	// 1 - Faça um Programa que peça as 4 notas bimestrais e mostre a média;
