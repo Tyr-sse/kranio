@@ -308,6 +308,65 @@ de um círculo, calcule e mostre sua área;*/
 
 	}
 	
+	console.log('TESTANDO')
+	let L = [1,2,[1,2,3,4,5],3,4,5,[1,2,3,4,5,[1,2,[1,2,3,4,5],3,4,5]]];
+	let v = 23;
+	let V = [2,3,4];
+	
+	function sumArr(arr){
+		let s = 0;
+		for(it of arr){
+			s += (it[0])? sumArr(it): +it;
+		}
+		return +s;
+	}
+	const c = 2.834719824789127489127489;
+	arredondar('%2.2f',c);
+	console.log((-1)?'a':'b')
+	function arredondar(s,val){
+		let zeroes = false;
+		let i_b = 0;
+		
+		let integer = 0;
+		
+
+		let decimal = 0;
+		let S = s.trim();
+		let etapa = 0;
+			//0 - procurando %
+			//1 - procurando .
+			//2 - procurando f
+			//3 final
+			
+		for(let i=0;i<S.length && etapa!==3;i++){
+			
+			if(S[i]==='%') {
+				etapa = 1;
+				i_b = i;
+			}; 
+			if(etapa===1 && S[i]==='.') {
+				etapa = 2;
+				integer = S.substring(i_b,i);
+				i_b = i;
+			}
+			if(etapa===2 && S[i]==='f'){ 
+				etapa = 3;
+				decimal = S.substring(i_b,i);
+				console.log('INT> ',integer,'\nDEC> ',decimal);
+			}
+			
+
+			
+
+		}
+		
+
+
+	}
+	console.log('%f', c);
+	console.log(sumArr(L))
+
+
 </script>
 
 </html>

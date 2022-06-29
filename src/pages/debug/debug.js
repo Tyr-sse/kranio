@@ -1,5 +1,22 @@
 const domain = 'localhost:2200';
 
+f();
+function f(){
+	let d = document.getElementById('out');
+	let L = ['Jumento', 2, 'CAvalo', 'XCab', 55];
+	let O = {'joseph':23,'asd':233,'ads':245, 4:2};
+	
+
+
+	let r = "";
+	for(it of L){
+		r += (it+'').toUpperCase()+'_';
+		console.log('>> ',it);
+	}
+	d.textContent = r;
+}
+
+
 
 function isValidMatchId(match_id) {
 	let r = true;
