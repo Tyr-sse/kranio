@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+		:root {
+			--bg: #222222;
+			--bg2: #333333;
+			--softBg: #999999;
+			--txt: #eeeedd;
+
+			--tint01: #ed7411;
+			--tint010: #555555;
+			--tint02: red;
+			--tint03: #00aaaa;
+			--tint04: #ff00ff;
+
+		}
+
+		* {
+			background-color: var(--bg);
+			color: var(--txt);
+			font-family: lato, sans-serif;
+		}
+
+		h1 {
+			font-size: 32px;
+			color: var(--txt);
+		}
+
+		h2 {
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h3 {
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h4 {
+			font-size: 16px;
+			color: var(--tint01);
+		}
+
+
+
+
+
+		.fold {
+			display: none;
+
+		}
+
+
+
+
+
+
+
+		.in {
+			border-color: var(--softBg);
+			border-style: solid;
+			border-width: 2px;
+			border-radius: 5px;
+
+			margin-left: 20px;
+			margin-right: 20x;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			height: 30px;
+			width: 50;
+
+			font-size: 16px;
+
+			background-color: var(--txt);
+			color: var(--bg);
+		}
+
+		::placeholder {
+			color: var(--tint010);
+			font-size: 12px;
+
+
+		}
+
+
+		.btn {
+			color: var(--txt);
+			background-color: #aabbcc00;
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 8px;
+
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-top: auto;
+			margin-bottom: auto;
+
+			min-height: 35px;
+			min-width: 35px;
+			transition: background-color 0.2s;
+		}
+
+		.btn:hover {
+			background-color: var(--bg2);
+		}
+
+		.bord {
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 12px;
+			background-color: #aabbcc00;
+		}
+
+		.row {
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+
+		}
+
+		.col {
+			flex: 1;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+
+			align-items: center;
+		}
+
+		.q_input {
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+
+		}
+	</style>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+	<title>Atividades</title>
+</head>
+
+<body class="bord" style="width:95%;">
+	<div class="col bord" style="min-height: 800px; width: 100%">
+		<h1>Atividades</h1>
+
+
+		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px;">
+			<h2>Exercício de fixação 02</h2>
+			<div style="margin:10px;">
+				1 - Faça um programa que leia 2 números inteiros,
+				calcule e exiba a média aritmética e o produto dos números.
+				<br>O seu programa deve, obrigatoriamente, utilizar as seguintes funções
+				feitas por você:
+				<br>
+				<br>calcula_media(): recebe 2 números inteiros como entrada e retorna a media dos dois
+				<br>calcula_produto(): recebe 2 numeros como entrada e retorna o produto dos dois
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Notas:</h2>
+				<input id="input01_ex02_q01" class="in q_input q_01_input" type="number" placeholder="Nota 01"
+					onchange="ex02_q01()" onkeydown="ex02_q01()" onkeyup="ex02_q01()" />
+				<input id="input02_ex02_q01" class="in q_input q_01_input" type="number" placeholder="Nota 02"
+					onchange="ex02_q01()" onkeydown="ex02_q01()" onkeyup="ex02_q01()" />
+
+				<h4 id="output01_ex02_q01"> Média: </h4>
+				<h4 id="output02_ex02_q01"> Produto: </h4>
+			</div>
+
+			<div style="margin:10px;">
+				2
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2> Notas:</h2>
+				<input id="input01_ex02_q01" class="in q_input q_01_input" type="number" placeholder="Nota 01"
+					onchange="ex02_q01()" onkeydown="ex02_q01()" onkeyup="ex02_q01()" />
+				<input id="input02_ex02_q01" class="in q_input q_01_input" type="number" placeholder="Nota 02"
+					onchange="ex02_q01()" onkeydown="ex02_q01()" onkeyup="ex02_q01()" />
+
+				<h4 id="output01_ex02_q01"> Média: </h4>
+				<h4 id="output02_ex02_q01"> Produto: </h4>
+			</div>
+
+			<div style="margin:10px; width: 70%">
+				3 - Faça um Programa que peça a temperatura
+				em graus Fahrenheit, transforme e mostre a
+				temperatura em graus Celsius.
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Conversor</h2>
+				<input id="cel" class="in q_input" type="number" placeholder="Celcius" onchange="ex01_q03(true)"
+					onkeyup="ex01_q03(true)" onkeydown="ex01_q03(true)" />
+				<input id="fah" class="in q_input" type="number" placeholder="Fahrenheit" onchange="ex01_q03(false)"
+					onkeyup="ex01_q03(false)" onkeydown="ex01_q03(false)" />
+
+			</div>
+
+			<div style="margin:10px; width: 70%">
+				4 - Faça um programa que calcule e mostre a area e o
+				perimetro de uma sala retangular cujas medidas são
+				fornecidas pelo usuário;
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Informações<br>Geométricas</h2>
+				<input id="larg" class="in q_input" type="number" placeholder="Largura" onchange="ex01_q04()"
+					onkeyup="ex01_q04()" onkeydown="ex01_q04()" />
+				<input id="comp" class="in q_input" type="number" placeholder="Comprimento" onchange="ex01_q04()"
+					onkeyup="ex01_q04()" onkeydown="ex01_q04()" />
+				<h4 id="area"> Área: </h4>
+				<h4 id="perim"> Perímetro: </h4>
+			</div>
+
+
+			<div style="margin:10px; max-width: 70%">
+				5 - Escreva um programa para ler as dimensões
+				de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessarias
+				para cobrir o chão da cozinha.
+				Cada caixa de azulejos possui 2, 5 m2.
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px;">
+				<h2>Dimensões<br>Cozinha</h2>
+				<input id="input01_ex01_05" class="in q_input" type="number" placeholder="Largura" onchange="ex01_q05()"
+					onkeyup="ex01_q05()" onkeydown="ex01_q05()" />
+				<input id="input02_ex01_05" class="in q_input" type="number" placeholder="Comprimento"
+					onchange="ex01_q05()" onkeyup="ex01_q05()" onkeydown="ex01_q05()" />
+				<h3>Quantidade de <br>caixas de Azulejos: </h3>
+				<h4 id="output01_ex02_q01">?</h4>
+
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+</body>
+<script>
+	// 	ATIVIDADE DE FIXAÇÃO 1
+
+	/* 1 - Faça um programa que leia 2 números inteiros,
+	calcule e exiba a média aritmética e o produto dos números.
+	O seu programa deve, obrigatoriamente, utilizar as seguintes funções
+	feitas por você:
+	  calcula_media(): recebe 2 números inteiros como entrada e retorna a media dos dois
+	  calcula_produto(): recebe 2 numeros como entrada e retorna o produto dos dois
+  
+	*/
+	function ex02_q01() {
+		function calcula_media(num_01, num_02) {
+			return (num_01 + num_02) / 2.0;
+		}
+		function calcula_produto(num_01, num_02) {
+			return num_01 * num_02;
+		}
+		let n1 = +document.getElementById('input01_ex02_q01').value;
+		let n2 = +document.getElementById('input02_ex02_q01').value;
+
+		document.getElementById('output01_ex02_q01').textContent =
+			'Média ' + calcula_media(n1, n2);
+
+		document.getElementById('output02_ex02_q01').textContent =
+			'Produto: ' + calcula_produto(n1, n2);
+
+	}
+	/* 
+	2 - Faça um programa que calcule e imprima a média ponderada de um aluno.
+Inicialmente, o programa deverá ler o peso da primeira prova e o peso da segunda prova
+(ambos inteiros). A seguir, o programa deverá ler os seguintes dados do aluno:
+ matrícula (inteiro), nota da primeira prova e nota da segunda prova (ambas reais). Por último, o programa deve mostrar a matricula do aluno seguida da sua média. O seu programa deve, obrigatoriamente, utilizar a seguinte função feita por você:
+
+	*/
+
+	/*
+	ATIVIDADE DE FIXAÇÃO 2
+
+Realizar as questões abaixo:
+
+1 - Faça um programa que leia 2 números inteiros, calcule e exiba a média aritmética
+ e o produto dos números. O seu programa deve, obrigatoriamente, utilizar as seguintes funções feitas por você:
+
+calcula_media(): recebe 2 números inteiros como 
+
+2 - Faça um programa que calcule e imprima a média ponderada de um aluno.
+Inicialmente, o programa deverá ler o peso da primeira prova e o peso da segunda prova
+(ambos inteiros). A seguir, o programa deverá ler os seguintes dados do aluno:
+ matrícula (inteiro), nota da primeira prova e nota da segunda prova (ambas reais). Por último, o programa deve mostrar a matricula do aluno seguida da sua média. O seu programa deve, obrigatoriamente, utilizar a seguinte função feita por você:
+
+
+calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inteiros) como parâmetros e retorna a média ponderada dos valores;
+
+
+3 - Altere o programa do exercício 2 para que ele utilize a função calcula_produto do exercício 1 no cálculo da média ponderada;
+
+
+4 - Altere o programa do exercício 3 para que ele processe os dados de 2 alunos ao invés de apenas 1;
+
+
+5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde. O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
+
+- INSS: 10% do valor bruto;
+- FGTS: 8%;
+- Plano de Saúde: R$100,00
+
+
+6 - Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+-> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+-> A mensagem "Reprovado", se a média for menor do que sete;
+-> A mensagem "Aprovado com Distinção", se a média for igual a dez.
+
+
+7 - As Organizações Tabajara resolveram dar um aumento de salário aos seus colaboradores e lhe contraram para desenvolver o programa que calculará os reajustes.
+Faça um programa que recebe o salário de um colaborador e o reajuste segundo o seguinte critério, baseado no salário atual:
+
+
+- salários até R$ 280,00 (incluindo) : aumento de 20%
+- salários entre R$ 280,00 e R$ 700,00 : aumento de 15%
+- salários entre R$ 700,00 e R$ 1500,00 : aumento de 10%
+- salários de R$ 1500,00 em diante : aumento de 5%
+
+
+Após o aumento ser realizado, informe na tela:
+- o salário antes do reajuste;
+- o percentual de aumento aplicado;
+- o valor do aumento;
+- o novo salário, após o aumento.
+
+
+
+8 - Faça um programa para o cálculo de uma folha de pagamento, sabendo que os descontos são do Imposto de Renda, que depende do salário bruto (conforme tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do Salário Bruto, mas não é descontado (é a empresa que deposita). O Salário Líquido corresponde ao Salário Bruto menos os descontos. O programa deverá pedir ao usuário o valor da sua hora e a quantidade de horas trabalhadas no mês.
+Desconto do IR:
+
+- Salário Bruto até 900 (inclusive) - isento;
+- Salário Bruto até 1500 (inclusive) - desconto de 5%;
+- Salário Bruto até 2500 (inclusive) - desconto de 10%;
+- Salário Bruto acima de 2500 - desconto de 20% Imprima na tela as informações, dispostas conforme o exemplo abaixo. No exemplo o valor da hora é 5 e a quantidade de hora é 220.
+
+
+
+
+	
+	*/
+</script>
+
+</html>
