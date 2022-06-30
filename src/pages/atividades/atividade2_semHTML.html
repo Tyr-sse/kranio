@@ -14,6 +14,9 @@
 			--tint02: red;
 			--tint03: #00aaaa;
 			--tint04: #ff00ff;
+			--red: #ee1111;
+			--green: #11ee11;
+			
 
 		}
 
@@ -151,6 +154,13 @@
 		.out {
 			background-color: #999999;
 		}
+		.tbl{
+			background-color: #aabbcc00;
+
+		}
+		.transp{
+			background-color: #aabbcc00;
+		}
 	</style>
 
 	<meta charset="UTF-8" />
@@ -173,6 +183,47 @@
 		<button id="output_area_ex02_q02" class="btn item qBtn" onclick="ex02_q02()">
 			<h2>Questão 2</h2>
 			<h4>Média Ponderada</h4>
+		</button>
+		<button id="output_area_ex02_q02" class="btn item qBtn">
+			<h2>Questão 3</h2>
+		</button>
+		<button id="output_area_ex02_q02" class="btn item qBtn">
+			<h2>Questão 4</h2>
+		</button>
+		<button id="output_area_ex02_q03" class="btn item qBtn" onclick="ex02_q022()">
+			<h2>Questão 5</h2>
+			<table class="transp tbl">
+				<tbody>
+					<tr>
+						<td class="transp">Salário Bruto: </td>
+						<td> </td>
+						<td>   
+							<input class="in" type="number" style=" max-width: 100px;"> </input>
+
+						</td>
+
+					</tr>
+					<tr>
+						<td class="transp" style="color: var(--red);">INSS: </td>
+						<td class="transp" style="color: var(--red)"> -10% </td>
+						<td class="transp" style="color: var(--red)"> - R$0000,00</td>
+
+
+					</tr>
+					<tr>
+						<td class="transp" style="color: var(--red)">FGTS: </td>
+						<td class="transp" style="color: var(--red)">-08%</td>
+						<td class="transp"style="color: var(--red)"> - R$0000,00</td>
+					</tr>
+					<tr>
+						<td style="color: var(--red)">  </td>
+						<td style="color: var(--red)"> </td>
+						<td style="color: var(--txt)"> +R$0000,00</td>
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
 
 		</button>
 
@@ -252,7 +303,7 @@
 		}
 		document.getElementById('output_area_ex02_q02').innerHTML = r;
 	}
-
+	function ex02_q022() {}
 
 
 	/*
@@ -300,14 +351,16 @@ calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inte
 
 =====================================================
 
-5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde. O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
+5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde.
+O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
 
 - INSS: 10% do valor bruto;
 - FGTS: 8%;
 - Plano de Saúde: R$100,00
 
 
-6 - Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+6 - Faça um programa para a leitura de duas notas parciais de um aluno. 
+O programa deve calcular a média alcançada por aluno e apresentar:
 -> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
 -> A mensagem "Reprovado", se a média for menor do que sete;
 -> A mensagem "Aprovado com Distinção", se a média for igual a dez.
