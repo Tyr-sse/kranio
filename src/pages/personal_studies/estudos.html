@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+		:root {
+			--bg: #222222;
+			--bg2: #333333;
+			--softBg: #999999;
+			--txt: #eeeedd;
+
+			--tint01: #ed7411;
+			--tint02: red;
+			--tint03: #00aaaa;
+			--tint04: #ff00ff;
+
+		}
+
+		* {
+			background-color: var(--bg);
+			color: var(--txt);
+			font-family: lato, sans-serif;
+		}
+
+		h1 {
+			font-size: 32px;
+			color: var(--txt);
+		}
+
+		h2 {
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h3 {
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h4 {
+			font-size: 16px;
+			color: var(--tint01);
+		}
+
+
+
+
+
+		.fold {
+			display: none;
+
+		}
+
+
+
+
+
+
+
+		.in {
+			border-color: var(--softBg);
+			border-style: solid;
+			border-width: 2px;
+			border-radius: 5px;
+
+			margin-left: 20px;
+			margin-right: 20x;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			height: 30px;
+			width: 50;
+
+			font-size: 16px;
+
+			background-color: var(--txt);
+			color: var(--bg);
+		}
+
+		::placeholder {
+			color: var(--tint010);
+			font-size: 12px;
+
+
+		}
+
+
+		.btn {
+			color: var(--txt);
+			background-color: #aabbcc00;
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 8px;
+
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-top: auto;
+			margin-bottom: auto;
+
+			min-height: 35px;
+			min-width: 35px;
+			transition: background-color 0.2s;
+		}
+
+		.btn:hover {
+			background-color: var(--bg2);
+		}
+
+		.bord {
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 12px;
+			background-color: #aabbcc00;
+		}
+
+		.row {
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+
+		}
+
+		.col {
+			flex: 1;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+
+			align-items: center;
+		}
+
+		.q_input {
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+
+		}
+	</style>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+	<title>Atividades</title>
+</head>
+
+<body class="bord" style="width:95%;">
+	<div class="col bord" style="min-height: 800px; width: 100%">
+		<h1>Pessoal</h1>
+
+
+		<div class="col bord fold" style="min-height: 100px; min-width: 600px; margin:10px;">
+			<h2>Transpilador</h2>
+			<div style="margin:10px;">
+				Transpilador COBOL
+			</div>
+			<div class="bord"
+				style="display:flex; flex-direction: column; justify-content: center; margin-bottom: 20px; width: 95%;">
+				<h2> Notas:</h2>
+				<input id="input_to_transpils" 
+					class="in q_input q_01_input" 
+					type="textarea" placeholder="Código a transpilar"
+					onchange="onC()" onkeydown="onC()" onkeyup="onC()" />
+				<input class="btn" type="button" onclick="transpile_to_Cobol()" />
+				<textarea 
+					id = "input_to_transpile"
+					rows="2000"
+					class="in"
+					style = "height: 7000px; width: 96%;
+					margin-left:auto;
+					margin-right: auto;
+					"
+					></textarea>
+
+			</div>
+
+
+
+		</div>
+
+
+
+
+
+
+</body>
+<script>
+	function onC() {
+		//console.log('input_to_transpile changed')
+	}
+	function transpile_to_Cobol() {
+		let doc = document.getElementById("input_to_transpile");
+		let S = doc.value;
+		let r = `
+		******************************************************************
+      * Author: Thiago de Oliveira Almeida
+      * Nome de Guerra: Thiago Arcanjo
+      * Chave: F9329132
+      * Date: 
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       
+       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       
+       DATA DIVISION.
+       
+       FILE SECTION.
+       
+       WORKING-STORAGE SECTION.
+          01 WRK-CPF PIC X(11).
+
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           ACCEPT WRK-CPF.
+           DISPLAY 'HELLO WORLD' WRK-CPF.
+            
+            
+            
+            
+            
+           STOP RUN.
+       END PROGRAM YOUR-PROGRAM-NAME.
+		`;
+		
+		let variables = [];
+		
+		function foundString(pos, str) {
+			let l = str.length;
+			if (l === 0) return 0;
+			return S.substring(pos, l) == str ? l : 0;
+		}
+
+		for (let i = 0; i <= S.length; i++) {//percorrer todo o arquivo
+			//console.log('>['+i+'] '+S[i]+'\n')
+			if(S[i]==' '||S[i]=='\n') break;//ignorar espaços e line break
+			let nextWord = ()=>{
+				let j = 0;
+				for(j=i; j<=S.length&&S[j]!=' '&&S[j]!='\n';j++);
+				let r = S.substring(i,j)
+				i = j;
+				return r;
+			}
+			let nw = nextWord();
+			console.log('	|>',nw)
+			if(nw == "let"){
+				console.log('DECLARATION FOUND')
+
+
+			}
+
+
+		}
+
+
+		//alert(doc.value);
+
+
+	}
+
+
+
+
+</script>
+
+</html>
