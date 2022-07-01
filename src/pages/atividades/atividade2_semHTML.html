@@ -16,6 +16,8 @@
 			--tint04: #ff00ff;
 			--red: #bb3030;
 			--green: #11ee11;
+			--golden: #ffff11;
+
 
 
 		}
@@ -201,19 +203,19 @@
 			<h2>Questão 2</h2>
 			<h4>Média Ponderada</h4>
 		</button>
-		<button id="output_area_ex02_q02" class="btn item qBtn">
+		<button id="output_area_ex02_q02" class="item qBtn">
 			<h2>Questão 3</h2>
 		</button>
-		<button id="output_area_ex02_q02" class="btn item qBtn">
+		<button id="output_area_ex02_q02" class="item qBtn">
 			<h2>Questão 4</h2>
 		</button>
-		<button id="output_area_ex02_q03" class="btn item qBtn" onclick="ex02_q022()">
+		<button id="output_area_ex02_q03" class="item qBtn" onclick="ex02_q022()">
 			<h2>Questão 5</h2>
 			<table class="transp tbl">
 				<tbody>
 					<tr>
 						<td class="transp">Salário Bruto: </td>
-						<td> </td>
+						<td > </td>
 						<td>
 							<input id="input01_e02_q05" class="in hcent" type="number" style=" max-width: 100px;"
 								placeholder="  Salário bruto" onchange="ex02_q05()" onkeydown="ex02_q05()"
@@ -223,26 +225,27 @@
 
 					</tr>
 					<tr>
-						<td class="transp tbl-td" >INSS: </td>
-						<td id='e02_q05_INSSPercent'class="transp tbl-td" style="color: var(--red);min-width: 80px;"> -10% </td>
+						<td class="transp tbl-td">INSS: </td>
+						<td id='e02_q05_INSSPercent' class="transp tbl-td" style="color: var(--red);min-width: 80px;">
+							-10% </td>
 						<td id="output01_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 
 
 					</tr>
 					<tr>
 						<td class="transp tbl-td" ">FGTS: </td>
-						<td id='e02_q05_FGTSPercent' class="transp tbl-td" style="color: var(--red); ">-08%</td>
+						<td id='e02_q05_FGTSPercent' class=" transp tbl-td" style="color: var(--red); ">-08%</td>
 						<td id="output02_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 					</tr>
 					<tr>
-						<td class="transp tbl-td" >Plano de Saúde: </td>
+						<td class="transp tbl-td">Plano de Saúde: </td>
 						<td id="output03_e02_q05" class="transp tbl-td" style="color: var(--red)"> ---- </td>
 						<td class="transp tbl-td" style="color: var(--red)"> - R$0100,00</td>
 					</tr>
 					<tr>
 						<td style="border-color: #aabbcc00"> </td>
-						<td id="e02_q05_expenses_percent"style="color: var(--red)"> </td>
-						<td id="output04_e02_q05" style="color: var(--txt)"> +R$0000,00</td>
+						<td id="e02_q05_expenses_percent" style="color: var(--red)"> </td>
+						<td id="e02_q05_expenses_abs" style="color: var(--txt)"> +R$0000,00</td>
 					</tr>
 					<tr>
 					</tr>
@@ -250,6 +253,20 @@
 			</table>
 
 		</button>
+
+		<button id="output_area_ex02_q02" class="btn item qBtn">
+			<h2>Questão 6</h2>
+			<div class="bord" id="output_container_01_e02_q06" style="width: 80%;">
+				<h4 id="output01_e02_q06" style="color: var(--red)">Situação</h4>
+				<h4 id="output02_e02_q06">Média</h4>
+			</div>
+
+			<input id="input01_e02_q06" class="in hcent" type="number" style=" max-width: 100px;" placeholder=" Nota 01"
+				onchange="ex02_q06()" onkeydown="ex02_q06()" onkeyup="ex02_q06()" onkeypress="ex02_q06()"> </input>
+			<input id="input02_e02_q06" class="in hcent" type="number" style=" max-width: 100px;" placeholder=" Nota 02"
+				onchange="ex02_q06()" onkeydown="ex02_q06()" onkeyup="ex02_q06()" onkeypress="ex02_q06()"> </input>
+		</button>
+
 
 	</div>
 
@@ -327,7 +344,7 @@
 			}
 
 		}
-		console.log('out> ', R);
+		//console.log('out> ', R);
 		return R;
 	}
 	console.log(mask_number('R$%04.3f', 102));
@@ -387,23 +404,29 @@
 
 	function ex02_q05() {
 		let brute_sal = +document.getElementById('input01_e02_q05').value;
-		
+
 		const INSS_percent = 10;
-		document.getElementById('e02_q05_INSSPercent').textContent = mask_number('%02.1f',-INSS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		
+		document.getElementById('e02_q05_INSSPercent').textContent = mask_number('%02.1f', -INSS_percent) + '%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+
 		const FGTS_percent = 8;
-		document.getElementById('e02_q05_FGTSPercent').textContent = mask_number('%02.1f',-FGTS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		
+		document.getElementById('e02_q05_FGTSPercent').textContent = mask_number('%02.1f', -FGTS_percent) + '%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+
 		const health_plan_abs = 100;
 		let x = ((brute_sal * INSS_percent) / 100.0);
 
 		//console.log('In> ', x, '\nOut> ' + mask_number('R$%04.3f', +x));
-		document.getElementById('output01_e02_q05').textContent = mask_number('R$%04.3f',-((brute_sal * INSS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		document.getElementById('output02_e02_q05').textContent = mask_number('R$%04.3f',-((brute_sal * FGTS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		document.getElementById('output03_e02_q05').textContent = mask_number('%02.1f',-(100 * health_plan_abs) / brute_sal )+'%' //%Plano de saude
-
-		//document.getElementById('e02_q05_expenses_percent').textContent = mask_number('%02.1f',FGTS_percent+)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		
+		document.getElementById('output01_e02_q05').textContent = mask_number('R$%04.3f', -((brute_sal * INSS_percent) / 100.0));
+		document.getElementById('output02_e02_q05').textContent = mask_number('R$%04.3f', -((brute_sal * FGTS_percent) / 100.0));
+		document.getElementById('output03_e02_q05').textContent = mask_number('%02.1f', -(100 * health_plan_abs) / brute_sal) + '%';
+		document.getElementById('e02_q05_expenses_percent').textContent = mask_number('%02.1f', -(FGTS_percent + INSS_percent + ((100 * health_plan_abs) / brute_sal))) + '%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		let el_saldo = document.getElementById('e02_q05_expenses_abs');
+		let saldo = +brute_sal - brute_sal * 0.01 * (INSS_percent + FGTS_percent + ((100 * health_plan_abs) / brute_sal));
+		el_saldo.textContent = mask_number('%02.1f', saldo);//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		let stl = el_saldo.attributes.style;
+		stl = stl.split(':');
+		stl = stl[0] + ':red;';
+		el_saldo.attributes.style = stl;
+		console.log(stl)
 
 		//1 x% (x=10)
 		//2 y% (y=8)
@@ -412,15 +435,40 @@
 
 		//input01_e02_q05
 	}
+	function ex02_q06() {
+		let med = calcula_media(+document.getElementById('input02_e02_q06').value, +document.getElementById('input01_e02_q06').value)
+		let col = 'green';
+		let sit = 'Aprovado';
 
+		if (med < 7) {
+			col = 'red';
+			sit = 'Reprovado';
+		}
+		if (med >= 10) {
+			col = 'golden';
+			sit = 'Aprovado com Distinção';
+		}
+
+		document.getElementById('output_container_01_e02_q06').innerHTML = `
+				<h4 id="output01_e02_q06" style="color: var(--${col})">${sit}</h4>
+				<h4 id="output02_e02_q06" style="color: var(--${col})">${med}</h4>
+			`;
+
+
+	}
+	let obj = {
+		'thiago': 2,
+		'kk': 3,
+		'árvore': 33
+	}
+	
+	console.log("Thiago águia".normalize('NFD'))
 	/*
-	2 - Faça um programa que calcule e imprima a média ponderada de um aluno.
-Inicialmente, o programa deverá ler o peso da primeira prova e o peso da segunda prova
-(ambos inteiros). A seguir, o programa deverá ler os seguintes dados do aluno:
- matrícula (inteiro), nota da primeira prova e nota da segunda prova (ambas reais).
- Por último, o programa deve mostrar a matricula do aluno seguida da sua média. O seu programa deve, obrigatoriamente, utilizar a seguinte função feita por você:
-calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inteiros) como parâmetros e retorna a média ponderada dos valores;
-
+	6 - Faça um programa para a leitura de duas notas parciais de um aluno. 
+O programa deve calcular a média alcançada por aluno e apresentar:
+-> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+-> A mensagem "Reprovado", se a média for menor do que sete;
+-> A mensagem "Aprovado com Distinção", se a média for igual a dez.
 	*/
 
 	/*
@@ -456,7 +504,7 @@ calcula_media_ponderada(): recebe 2 notas (reais) e seus respectivos pesos (inte
 
 4 - Altere o programa do exercício 3 para que ele processe os dados de 2 alunos ao invés de apenas 1;
 
-=====================================================
+
 
 5 - Implemente, utilizando funções, um programa que receba do usuário o valor do salário bruto de um funcionário e imprima o valor com descontos de INSS, FGTS e Plano de Saúde.
 O programa deve utilizar uma função para calcular cada um dos descontos, sendo que estas funções devem receber o valor do salário bruto e retornar o valor a ser descontado. Os valores descontados devem ser:
@@ -464,6 +512,8 @@ O programa deve utilizar uma função para calcular cada um dos descontos, sendo
 - INSS: 10% do valor bruto;
 - FGTS: 8%;
 - Plano de Saúde: R$100,00
+
+=====================================================
 
 
 6 - Faça um programa para a leitura de duas notas parciais de um aluno. 
