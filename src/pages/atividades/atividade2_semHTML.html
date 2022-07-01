@@ -216,25 +216,22 @@
 						<td> </td>
 						<td>
 							<input id="input01_e02_q05" class="in hcent" type="number" style=" max-width: 100px;"
-								placeholder="  Salário bruto" 
-								onchange="ex02_q05()"
-								onkeydown="ex02_q05()"
-								onkeyup="ex02_q05()"
-								onkeypress="ex02_q05()"> </input>
+								placeholder="  Salário bruto" onchange="ex02_q05()" onkeydown="ex02_q05()"
+								onkeyup="ex02_q05()" onkeypress="ex02_q05()"> </input>
 
 						</td>
 
 					</tr>
 					<tr>
 						<td class="transp tbl-td" style="color: var(--red);">INSS: </td>
-						<td class="transp tbl-td" style="color: var(--red)"> -10% </td>
+						<td id='e02_q05_INSSPercent'class="transp tbl-td" style="color: var(--red);min-width: 80px;"> -10% </td>
 						<td id="output01_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 
 
 					</tr>
 					<tr>
 						<td class="transp tbl-td" style="color: var(--red)">FGTS: </td>
-						<td class="transp tbl-td" style="color: var(--red)">-08%</td>
+						<td id='e02_q05_FGTSPercent' class="transp tbl-td" style="color: var(--red); ">-08%</td>
 						<td id="output02_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 					</tr>
 					<tr>
@@ -279,6 +276,61 @@
 
 
 	}
+	function mask_number(ctrl_string, value) {
+		if (typeof (ctrl_string) !== typeof ('string')) return;
+		if (typeof (value) !== typeof (26.0)) return;
+		let R = '';
+		let zB = false;
+		let prefix = '';
+		treatCtrlStr(ctrl_string);
+		function treatCtrlStr(S) {
+			for (let i = 0; i < S.length; i++) {
+				if (S[i] !== '%') continue;
+				prefix = S.substring(0, i)
+				let intg = '';
+				let decm = null;
+
+				for (i++; i < S.length && S[i] != 'f'; i++) {
+					decm ? decm += S[i] : intg += S[i];
+					if (S[i] === '.') decm = '.';
+				}
+				zB = intg.length > 0 && intg[0] === '0';
+				if (decm) {
+					intg = intg.substring(0, intg.length - 1);
+					decm = decm.substring(1);
+				}
+
+				//console.log('INT> ', intg, '\nDEC> ', decm, '\n R: "', prefix, '"', '\nzB: ' + zB);
+				let val = (value + '').split('.');
+				function zeroes(n) {
+					if (n < 0 || !n) return '';
+					let zrs = '';
+					for (let j = 0; j < n; j++) { zrs += '0' }
+					return zrs;
+				}
+
+
+				if (zB) val[0] = zeroes(+intg - val[0].length) + val[0];
+				if (val.length === 1) {
+					let r = prefix + val[0] + '.' + zeroes(decm);
+					R = r;
+				} else {
+					if (+decm < val[1].length) {
+						val[1] = val[1].substring(0, +decm);
+					}
+					val[1] = val[1] + zeroes(+decm - val[1].length);
+					//console.log('\n   VAL> ', prefix+val.join('.'));
+					//console.log('RESULT>>> ',prefix+val.join('.'))
+					R = '' + prefix + val.join('.');
+				}
+
+			}
+
+		}
+		console.log('out> ', R);
+		return R;
+	}
+	console.log(mask_number('R$%04.3f', 102));
 
 	function calcula_media(num_01, num_02) {
 		return (num_01 + num_02) / 2.0;
@@ -286,7 +338,8 @@
 	function calcula_produto(num_01, num_02) {
 		return num_01 * num_02;
 	}
-
+	//mask_number('R$prefix%010.4', 200.414);
+	//mask_number('R$%04.4f', 20.55)
 
 	function calcula_media_ponderada(num_01, peso_01, num_02, peso_02) {
 		return (calcula_produto(num_01, peso_01) + calcula_produto(num_02, peso_02)) / (peso_01 + peso_02)
@@ -333,13 +386,24 @@
 	function ex02_q022() { }
 
 	function ex02_q05() {
-		console.log('1');
-		let salario_bruto = +document.getElementById('input01_e02_q05').value;
-		//salario_bruto = (isNaN(input01_e02_q05))?0:salario_bruto;
+		let brute_sal = +document.getElementById('input01_e02_q05').value;
 		
-		const x = 10;
-		const y = 8;
-		const z = 
+		const INSS_percent = 10;
+		document.getElementById('e02_q05_INSSPercent').textContent = mask_number('%02.1f',INSS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		
+		const FGTS_percent = 8;
+		document.getElementById('e02_q05_FGTSPercent').textContent = mask_number('%02.1f',FGTS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		
+		const health_plan_abs = 100;
+		let x = ((brute_sal * INSS_percent) / 100.0);
+
+		//console.log('In> ', x, '\nOut> ' + mask_number('R$%04.3f', +x));
+		document.getElementById('output01_e02_q05').textContent = mask_number('R$%04.3f',((brute_sal * INSS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('output02_e02_q05').textContent = mask_number('R$%04.3f',((brute_sal * FGTS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('output03_e02_q05').textContent = mask_number('%02.1f',(100 * health_plan_abs) / brute_sal )+'%' //%Plano de saude
+
+
+
 		//1 x% (x=10)
 		//2 y% (y=8)
 		//3 z% (100 reais)
