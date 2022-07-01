@@ -215,7 +215,7 @@
 				<tbody>
 					<tr>
 						<td class="transp">Salário Bruto: </td>
-						<td > </td>
+						<td> </td>
 						<td>
 							<input id="input01_e02_q05" class="in hcent" type="number" style=" max-width: 100px;"
 								placeholder="  Salário bruto" onchange="ex02_q05()" onkeydown="ex02_q05()"
@@ -254,7 +254,7 @@
 
 		</button>
 
-		<button id="output_area_ex02_q02" class="btn item qBtn">
+		<button id="output_area_ex02_q06" class="btn item qBtn">
 			<h2>Questão 6</h2>
 			<div class="bord" id="output_container_01_e02_q06" style="width: 80%;">
 				<h4 id="output01_e02_q06" style="color: var(--red)">Situação</h4>
@@ -267,6 +267,16 @@
 				onchange="ex02_q06()" onkeydown="ex02_q06()" onkeyup="ex02_q06()" onkeypress="ex02_q06()"> </input>
 		</button>
 
+		<button id="output_area_ex02_q07" class="btn item qBtn">
+			<h2>Questão 7</h2>
+			<div class="bord" id="output_container_01_e02_q07" style="width: 80%;">
+				<h4 id="output02_e02_q07">Salário</h4>
+			</div>
+
+			<input id="input01_e02_q07" class="in hcent" type="number" style=" max-width: 100px;" placeholder=" Salário"
+				onchange="ex02_q07()" onkeydown="ex02_q07()" onkeyup="ex02_q07()" onkeypress="ex02_q06()"> </input>
+
+		</button>
 
 	</div>
 
@@ -456,13 +466,34 @@
 
 
 	}
-	let obj = {
-		'thiago': 2,
-		'kk': 3,
-		'árvore': 33
+	function ex02_q07() {
+		let salario = +document.getElementById('input01_e02_q07').value;
+		let r = 0;
+		let p = 1.2;
+		if (salario <= 280) p = 1.2;
+		if (salario > 280) p = 1.15;
+		if (salario > 700) p = 1.1;
+		if (salario >= 1500) p = 1.05;
+		r = salario * p;
+		document.getElementById('output02_e02_q07').textContent = 'Salário reajustado \n(aumento de ' + mask_number('%2.3f',(p-1)*100) + '%): ' + r;
+
 	}
+
+	/*
+	7 - As Organizações Tabajara resolveram dar um aumento de salário aos seus colaboradores
+e lhe contraram para desenvolver o programa que calculará os reajustes.
+Faça um programa que recebe o salário de um colaborador e o reajuste segundo 
+o seguinte critério, baseado no salário atual:
+
+
+- salários até R$ 280,00 (incluindo) : aumento de 20%
+- salários entre R$ 280,00 e R$ 700,00 : aumento de 15%
+- salários entre R$ 700,00 e R$ 1500,00 : aumento de 10%
+- salários de R$ 1500,00 em diante : aumento de 5%
 	
-	console.log("Thiago águia".normalize('NFD'))
+	*/
+
+
 	/*
 	6 - Faça um programa para a leitura de duas notas parciais de um aluno. 
 O programa deve calcular a média alcançada por aluno e apresentar:
