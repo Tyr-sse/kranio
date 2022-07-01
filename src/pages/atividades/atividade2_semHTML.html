@@ -14,7 +14,7 @@
 			--tint02: red;
 			--tint03: #00aaaa;
 			--tint04: #ff00ff;
-			--red: #aa1111;
+			--red: #bb3030;
 			--green: #11ee11;
 
 
@@ -223,25 +223,25 @@
 
 					</tr>
 					<tr>
-						<td class="transp tbl-td" style="color: var(--red);">INSS: </td>
+						<td class="transp tbl-td" >INSS: </td>
 						<td id='e02_q05_INSSPercent'class="transp tbl-td" style="color: var(--red);min-width: 80px;"> -10% </td>
 						<td id="output01_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 
 
 					</tr>
 					<tr>
-						<td class="transp tbl-td" style="color: var(--red)">FGTS: </td>
+						<td class="transp tbl-td" ">FGTS: </td>
 						<td id='e02_q05_FGTSPercent' class="transp tbl-td" style="color: var(--red); ">-08%</td>
 						<td id="output02_e02_q05" class="transp tbl-td" style="color: var(--red)"> - R$0000,00</td>
 					</tr>
 					<tr>
-						<td class="transp tbl-td" style="color: var(--red)">Plano de Saúde: </td>
+						<td class="transp tbl-td" >Plano de Saúde: </td>
 						<td id="output03_e02_q05" class="transp tbl-td" style="color: var(--red)"> ---- </td>
 						<td class="transp tbl-td" style="color: var(--red)"> - R$0100,00</td>
 					</tr>
 					<tr>
-						<td class="" style="color: var(--red)"> </td>
-						<td style="color: var(--red)"> </td>
+						<td style="border-color: #aabbcc00"> </td>
+						<td id="e02_q05_expenses_percent"style="color: var(--red)"> </td>
 						<td id="output04_e02_q05" style="color: var(--txt)"> +R$0000,00</td>
 					</tr>
 					<tr>
@@ -389,20 +389,21 @@
 		let brute_sal = +document.getElementById('input01_e02_q05').value;
 		
 		const INSS_percent = 10;
-		document.getElementById('e02_q05_INSSPercent').textContent = mask_number('%02.1f',INSS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('e02_q05_INSSPercent').textContent = mask_number('%02.1f',-INSS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
 		
 		const FGTS_percent = 8;
-		document.getElementById('e02_q05_FGTSPercent').textContent = mask_number('%02.1f',FGTS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('e02_q05_FGTSPercent').textContent = mask_number('%02.1f',-FGTS_percent)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
 		
 		const health_plan_abs = 100;
 		let x = ((brute_sal * INSS_percent) / 100.0);
 
 		//console.log('In> ', x, '\nOut> ' + mask_number('R$%04.3f', +x));
-		document.getElementById('output01_e02_q05').textContent = mask_number('R$%04.3f',((brute_sal * INSS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		document.getElementById('output02_e02_q05').textContent = mask_number('R$%04.3f',((brute_sal * FGTS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
-		document.getElementById('output03_e02_q05').textContent = mask_number('%02.1f',(100 * health_plan_abs) / brute_sal )+'%' //%Plano de saude
+		document.getElementById('output01_e02_q05').textContent = mask_number('R$%04.3f',-((brute_sal * INSS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('output02_e02_q05').textContent = mask_number('R$%04.3f',-((brute_sal * FGTS_percent) / 100.0))//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		document.getElementById('output03_e02_q05').textContent = mask_number('%02.1f',-(100 * health_plan_abs) / brute_sal )+'%' //%Plano de saude
 
-
+		//document.getElementById('e02_q05_expenses_percent').textContent = mask_number('%02.1f',FGTS_percent+)+'%';//mask_number('R$%5.2',  ((brute_sal * INSS_percent) / 100.0) )//INSS 
+		
 
 		//1 x% (x=10)
 		//2 y% (y=8)
