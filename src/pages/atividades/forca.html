@@ -198,20 +198,17 @@
 <body class="bord" style="width:95%;">
 	<div class="col bord " style="min-height: 500px; width: 100%; ">
 
-		<div class="bord item qBtn">
 
-			<div id="board_container" class="col" style="
-					width: 400px;height: 400px;
-					max-height: 340px; visibility: visible;
+
+		<div id="board_container" class="col" style="
+					width: 100%;height: 400px;
+					min-height: 340px;
 					border-width: 3px; margin-bottom: 20px;
 					background-color: #aabbcc00;
 					">
-				<h1>Jogo da Forca</h1>
-				
-				<h2>Escolha o tema:</h2>
+			<h1>Jogo da Forca</h1>
 
-			</div>
-
+			<h2>Escolha o tema:</h2>
 
 		</div>
 
@@ -286,8 +283,9 @@
 
 
 	// https://www.coursera.org/learn/cobol-programming-vscode
-	function start_game(word) {
-		word_list = word.split('');
+	function start_game(wrd) {
+		word = wrd
+		word_list = wrd.split('');
 		document.getElementById('board_container').innerHTML = `
 			<div id="board_container" class="bord col" 
 				style="
@@ -302,8 +300,10 @@
 					background-color:var(--bg)
 					"
 			>
-				<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)">A B C D</h2>
-				<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)">A B C D</h2>
+			
+				<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
+				<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
+				<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
 				<h3>${word}</h3>
 				<div class="col" > 
 					<div id='hd' style="font-size: 64px">O</div>
@@ -320,13 +320,13 @@
 					</div>
 					<div class="row" style="margin-top: -16px;text-align: center; justify-content: center;">
 						<div id='ll' style="font-size: 70px;">
-							/
+							|
 						</div>
-						<div id='cr' style="font-size: 64px;">
+						<div id='cr' style="font-size: 58px;">
 							'''
 						</div>
 						<div id='rl' style="font-size: 70px;">
-							\\
+							|
 						</div>
 					</div>
 
@@ -343,6 +343,7 @@
 	let stick_apendages = ['hd', 'bd', 'la', 'rl', 'll', 'ra'];
 	let incorrect_guesses = [];
 	let correct_guesses = [];
+	let word = '';
 	let word_list = [];
 	//LEMBRAR DE TIRAR O CR JUNTO COM O HD
 
@@ -353,26 +354,52 @@
 		//console.log(numbers.toUpperCase().split(''));
 		//console.log('> ',letters.toUpperCase().split('').includes(k));
 		console.log(k);
-		if (!letters.includes(k)) alert('"' + k + '" é inválido. Seu palpite deve ser uma letra.');
-		if (incorrect_guesses.includes(k)) alert('"' + k + '" Já foi utilizada, NÃO FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.');
-		if (correct_guesses.includes(k)) alert('"' + k + '" Já foi utilizada, FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.');
+		let msg = '';
+		if (['ALT', 'META', 'F12', 'F5', 'SHIFT'].includes(k)) return;
 
-		if (word_list.includes(k)) {
-			//correct guess
-
-		} else {
-			//incorrect guess
-
+		if (!letters.includes(k)) msg = '"' + k + '" é inválido. Seu palpite deve ser uma letra.';
+		if (incorrect_guesses.includes(k)) msg = '"' + k + '" Já foi utilizada, NÃO FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.';
+		if (correct_guesses.includes(k)) msg = '"' + k + '" Já foi utilizada, FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.';
+		const time_msg_lasts = 5000;
+		if (msg) {
+			let msg_cont = document.getElementById('msg-container');
+			msg_cont.textContent = msg;
+			msg_cont.style.color = 'var(--tint02)';
+			setTimeout(()=>{
+				msg_cont.style.color = 'var(--bg)';
+			},time_msg_lasts);
+			return;
 		}
 
-		//LETRA VALIDA
-		//LETRA VALIDA POREM JA USADA
-		//
-		//LETRA INCORRETA
-		//matar o boneco
-		if (event.key == "key Name") {
-			// Do Stuff
+
+		if (word_list.includes(k)) {//correct guess
+			correct_guesses.push(k);
+			let r = '';
+			for (let lt of word) r += correct_guesses.includes(lt) ? lt : '_';
+			document.getElementById('correct-letters').textContent = r;
+		} else {//incorrect guess
+			incorrect_guesses.push(k);
+			document.getElementById('incorrect-letters').textContent =
+				incorrect_guesses.reduce(
+					(prev, curr) => curr + ',' + prev,
+					''
+				);
+			//console.log('>> ',stick_apendages.pop());
+			document.getElementById(stick_apendages.pop()).style.color = 'var(--bg)'
+			if(stick_apendages.length===3) document.getElementById('cr').style.color = 'var(--bg)'
 		}
+		if(stick_apendages.length===0) alert('DEAD')
+		//CHECAR SE ACABOU O JOGO
+
+
+		// //LETRA VALIDA
+		// //LETRA VALIDA POREM JA USADA
+		// //
+		// //LETRA INCORRETA
+		// //matar o boneco
+		// if (event.key == "key Name") {
+		// 	// Do Stuff
+		// }
 
 	}
 
