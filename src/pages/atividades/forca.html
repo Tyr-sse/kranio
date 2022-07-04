@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style id="stl">
+		:root {
+			--bg: #222222;
+			--bg2: #333333;
+			--softBg: #999999;
+			--txt: #eeeedd;
+
+			--tint01: #ed7411;
+			--tint010: #555555;
+			--tint02: red;
+			--tint03: #00aaaa;
+			--tint04: #ff00ff;
+			--red: #bb3030;
+			--green: #11ee11;
+			--golden: #ffff11;
+
+
+
+		}
+
+		* {
+			background-color: var(--bg);
+			color: var(--txt);
+			font-family: lato, sans-serif;
+		}
+
+		h1 {
+			background-color: #aabbcc00;
+			font-size: 32px;
+			color: var(--txt);
+		}
+
+		h2 {
+			background-color: #aabbcc00;
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h3 {
+			background-color: #aabbcc00;
+			font-size: 20px;
+			color: var(--txt);
+		}
+
+		h4 {
+			background-color: #aabbcc00;
+			font-size: 16px;
+			color: var(--tint01);
+		}
+
+
+
+
+		.in {
+			border-color: var(--softBg);
+			border-style: solid;
+			border-width: 2px;
+			border-radius: 5px;
+
+			margin-left: 20px;
+			margin-right: 20x;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			height: 30px;
+			width: 50;
+
+			font-size: 16px;
+
+			background-color: var(--txt);
+			color: var(--bg);
+		}
+
+		::placeholder {
+			color: var(--tint010);
+			font-size: 12px;
+
+
+		}
+
+
+		.btn {
+			color: var(--txt);
+			background-color: #aabbcc00;
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 8px;
+
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-top: auto;
+			margin-bottom: auto;
+
+			min-height: 35px;
+			min-width: 35px;
+			transition: background-color 0.2s;
+		}
+
+		.btn:hover {
+			background-color: var(--bg2);
+		}
+
+		.bord {
+			border-color: var(--txt);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 12px;
+			background-color: #aabbcc00;
+		}
+
+		.row {
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+
+		}
+
+		.col {
+			flex: 1;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+
+			align-items: center;
+		}
+
+		.q_input {
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+
+		}
+
+		.item {
+			flex: 1;
+			margin: 2px;
+			display: flex;
+			vertical-align: center;
+			vertical-align: middle;
+
+		}
+
+		.qBtn {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-width: 400px;
+			margin-top: 5px;
+		}
+
+		.out {
+			background-color: #999999;
+		}
+
+		td {
+			background-color: #aabbcc00;
+			border-radius: 3px;
+			border: 2px solid;
+			margin-left: auto;
+
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.transp {
+			background-color: #aabbcc00;
+		}
+
+		.hcent {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.vcent {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+
+		.lrg {
+			width: 200px;
+			padding: 5px;
+
+		}
+	</style>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+	<title>Jogo da Forca</title>
+</head>
+
+<body class="bord" style="width:95%;">
+	<div class="col bord " style="min-height: 500px; width: 100%; ">
+
+		<div class="bord item qBtn">
+
+			<div id="board_container" class="col" style="
+					width: 400px;height: 400px;
+					max-height: 340px; visibility: visible;
+					border-width: 3px; margin-bottom: 20px;
+					background-color: #aabbcc00;
+					">
+				<h1>Jogo da Forca</h1>
+				
+				<h2>Escolha o tema:</h2>
+
+			</div>
+
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+</body>
+<script>
+	let themes = {
+		"ANIMAIS": [
+			'CAVALO',
+			'GIRAFA',
+			'HIPOPOTAMO',
+			'ZEBRA',
+			'ELEFANTE',
+			'TARTARUGA',
+			'CAMELO',
+			'ASNO',
+			'TATU',
+			'RINOCERONTE',
+			'AGUIA',
+			'FALCAO'
+
+		],
+		"OBJETOS": [
+			'CAVALETE',
+			'GARRAFA',
+
+
+		],
+		"CONTINENTES": [
+			'ASIA',
+			'AFRICA',
+			'EUROPA',
+			'AMERICA',
+			'ANTARTICA'
+
+
+		],
+
+	}
+
+	display_theme_options();
+	function display_theme_options() {
+		console.log('asd')
+		let r =
+			`<h2>Escolha o tema:</h2>`;
+		for (theme in themes) {
+			r += `\n<button class="btn" onclick="choose_theme('${theme}')">${theme}</button>`;
+		}
+
+		document.getElementById('board_container').innerHTML = r;
+	}
+
+	function choose_theme(chosen_theme) {
+		console.log('chosen theme >> ', chosen_theme);
+		//choose a random word in the given theme
+		Math.random();
+		Math.random();
+		Math.random();
+		let word = themes[chosen_theme][parseInt(Math.random() * 10) % themes[chosen_theme].length];
+		start_game(word);
+	}
+
+
+	// https://www.coursera.org/learn/cobol-programming-vscode
+	function start_game(word) {
+		word_list = word.split('');
+		document.getElementById('board_container').innerHTML = `
+			<div id="board_container" class="bord col" 
+				style="
+					width: 300px;
+					height: 450px;
+					border-color: var(--tint04);
+					border-width: 2px;
+					margin: 20px;
+					padding-bottom: 30px;
+					padding-top: 30px;
+					
+					background-color:var(--bg)
+					"
+			>
+				<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)">A B C D</h2>
+				<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)">A B C D</h2>
+				<h3>${word}</h3>
+				<div class="col" > 
+					<div id='hd' style="font-size: 64px">O</div>
+					<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
+						<div id='la' style="font-size: 70px;">
+							/
+						</div>
+						<div id='bd' style="font-size: 54px;">
+							[_]
+						</div>
+						<div id='ra' style="font-size: 70px;">
+							\\
+						</div>
+					</div>
+					<div class="row" style="margin-top: -16px;text-align: center; justify-content: center;">
+						<div id='ll' style="font-size: 70px;">
+							/
+						</div>
+						<div id='cr' style="font-size: 64px;">
+							'''
+						</div>
+						<div id='rl' style="font-size: 70px;">
+							\\
+						</div>
+					</div>
+
+				</div>
+				
+			</div>`;
+
+
+	}
+
+	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	const algarisms = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+	let stick_apendages = ['hd', 'bd', 'la', 'rl', 'll', 'ra'];
+	let incorrect_guesses = [];
+	let correct_guesses = [];
+	let word_list = [];
+	//LEMBRAR DE TIRAR O CR JUNTO COM O HD
+
+	window.addEventListener("keydown", tryChar);
+
+	function tryChar(event) {
+		let k = event.key.toUpperCase();
+		//console.log(numbers.toUpperCase().split(''));
+		//console.log('> ',letters.toUpperCase().split('').includes(k));
+		console.log(k);
+		if (!letters.includes(k)) alert('"' + k + '" é inválido. Seu palpite deve ser uma letra.');
+		if (incorrect_guesses.includes(k)) alert('"' + k + '" Já foi utilizada, NÃO FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.');
+		if (correct_guesses.includes(k)) alert('"' + k + '" Já foi utilizada, FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.');
+
+		if (word_list.includes(k)) {
+			//correct guess
+
+		} else {
+			//incorrect guess
+
+		}
+
+		//LETRA VALIDA
+		//LETRA VALIDA POREM JA USADA
+		//
+		//LETRA INCORRETA
+		//matar o boneco
+		if (event.key == "key Name") {
+			// Do Stuff
+		}
+
+	}
+
+	function showCorrectLetter(c) {
+		correct_guesses.push(c);
+		document.getElementById('')
+	}
+
+
+
+</script>
+
+</html>
