@@ -49,7 +49,7 @@
 		h4 {
 			background-color: #aabbcc00;
 			font-size: 16px;
-			color: var(--tint01);
+			color: var(--txt);
 		}
 
 
@@ -295,12 +295,12 @@
 		Math.random();
 		Math.random();
 		let word = themes[chosen_theme][parseInt(Math.random() * 10) % themes[chosen_theme].length];
-		start_game(word);
+		start_game(word, chosen_theme);
 	}
 
 
 	// https://www.coursera.org/learn/cobol-programming-vscode
-	function start_game(wrd) {
+	function start_game(wrd,ctheme) {
 		InputBlocked = false;
 		word = wrd
 		word_list = wrd.split('');
@@ -310,7 +310,7 @@
 			<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
 			<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
 			<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
-			<h3>${word}</h3>
+			<h4>${'Tema: '+ctheme}</h3>
 			<div class="col" > 
 				<div id='hd' style="font-size: 64px;color: var(--bg)">O</div>
 				<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
@@ -362,7 +362,7 @@
 	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	const algarisms = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	let stick_apendages = ['hd', 'bd', 'la', 'rl', 'll', 'ra'];
+	let stick_apendages = [ 'la', 'rl', 'll', 'ra','bd','hd'];
 	let incorrect_guesses = [];
 	let correct_guesses = [];
 	let word = '';
@@ -427,7 +427,7 @@
 			//console.log('>> ',stick_apendages.pop());
 			document.getElementById(stick_apendages.pop()).style.color = 'var(--red)';
 			if (stick_apendages.length === 0) return show_failure_screen();
-			if (stick_apendages.length === 3) document.getElementById('cr').style.color = 'var(--red)';
+			if (stick_apendages.length === 4) document.getElementById('cr').style.color = 'var(--red)';
 		}
 
 		//CHECAR SE ACABOU O JOGO
