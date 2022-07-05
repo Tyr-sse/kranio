@@ -6,6 +6,8 @@
 		:root {
 			--bg: #222222;
 			--bg2: #333333;
+			--bg3: #444444;
+			
 			--softBg: #999999;
 			--txt: #eeeedd;
 
@@ -26,6 +28,12 @@
 			background-color: var(--bg);
 			color: var(--txt);
 			font-family: lato, sans-serif;
+
+			
+			border-style: solid;
+			border-width: 0px;
+			border-radius: 12px;
+			
 		}
 
 		h1 {
@@ -46,9 +54,9 @@
 			color: var(--txt);
 		}
 
-		h4 {
+		p, h4 {
 			background-color: #aabbcc00;
-			font-size: 16px;
+			font-size: 14px;
 			color: var(--txt);
 		}
 
@@ -99,6 +107,15 @@
 			min-height: 35px;
 			min-width: 35px;
 			transition: background-color 0.2s;
+		}
+		.btn[del]{
+			color: var(--red);
+			border-width: 3px;
+			font-weight: 700;
+			border-color: var(--red);
+			border-radius: 5px;
+
+
 		}
 
 		.btn:hover {
@@ -216,7 +233,7 @@
 	</div>
 </body>
 <script>
-	let themes = {
+	let word_catalog = {
 		"ANIMAIS": [
 			'CAVALO',
 			'GIRAFA',
@@ -241,6 +258,12 @@
 			'TELEVISAO',
 			'GELADEIRA',
 			'MESA',
+			'CAMA',
+			'XICARA',
+			'CADEIRA',
+			'TESOURO',
+			'MAPA',
+			'FOLHA'
 
 
 
@@ -263,25 +286,59 @@
 
 
 		],
-		"CATEGORIA_02": [
-			'ASIA',
-			'AFRICA',
-			'EUROPA',
-			'AMERICA',
-			'ANTARTICA'
-
-
-		],
 
 
 	}
+	cadastro_de_palavras();
+	function cadastro_de_palavras(){
+		let word_card = "xa";
+		let palavrasHtml = '';
+		let temasHtml = '';
+		for(let tema in word_catalog){
+			console.log('TEMA> ',tema)
+			for(let palavra of word_catalog[tema]){
+				console.log(' palavra   > ',palavra)
+				palavrasHtml += `\n
+					<div class="row" style="width: 300px; margin-top: 20px; background-color: var(--bg3)">
+						<p style="min-width: 60%"> ${palavra}</p>	
+						<button class="btn"> Editar </button> 
+						<button class="btn" del> X </button> 
+					</div>
+				`;
+			}
+			temasHtml += 
+				`\n
+				<div style="width: 300px; margin-top: 20px; padding: 20px; background-color: var(--bg2); ">
+					<p style="font-size: 18px; color: var(--bg); font-weight: 800"> ${tema}</p>
+					${palavrasHtml}
+				</div>\n`;
+		}
+		
 
-	show_theme_options();
+		document.getElementById('board_container').innerHTML = `
+			<div class="bord" style="padding:20px"> 
+				<h2> PALAVRAS CATALOGADAS </h2>
+				
+				<div class="bord col" style="width: 100%; margin-top: 20px; padding-top: 20px; padding-bottom: 20px">
+					<input class="in hcenter" style="width:65%" id="add_word_in" placeholder="PALAVRA"></input>	
+					<input class="in hcenter" style="width:65%" id="add_word_in" placeholder="CATEGORIA"></input>	
+					<button class="btn"> Adicionar </button> 
+					
+				</div>
+				${temasHtml}
+				
+				
+			</div>
+		`;
+	}
+
+
+	//show_theme_options();
 	function show_theme_options() {
 		//console.log('{{ \n\n'+document.getElementById('body').innerHTML.split('<script')[0]  +'\n\n }}')
 		let r =
 			`<h2>Escolha o tema:</h2>`;
-		for (theme in themes) {
+		for (theme in word_catalog) {
 			r += `\n<button class="btn" onclick="choose_theme('${theme}')">${theme}</button>`;
 		}
 
@@ -294,7 +351,7 @@
 		Math.random();
 		Math.random();
 		Math.random();
-		let word = themes[chosen_theme][parseInt(Math.random() * 10) % themes[chosen_theme].length];
+		let word = word_catalog[chosen_theme][parseInt(Math.random() * 10) % word_catalog[chosen_theme].length];
 		start_game(word, chosen_theme);
 	}
 
