@@ -195,20 +195,26 @@
 	<title>Jogo da Forca</title>
 </head>
 
-<body class="bord" style="width:95%;">
+<body id="body" class="bord" style="width:95%;">
 	<div class="col bord " style="min-height: 500px; width: 100%; ">
 
 
+		<h1 class="bord" style="
+				width: 50%;
+				color:var(--bg);
+				background-color:var(--txt);
+				padding:5px;
+			">Jogo da Forca</h1>
 
-		<div id="board_container" class="col" style="
-					width: 100%;height: 400px;
+		<div id="board_container" class="col bord" style="
+					width: 80%;height: 400px;
 					min-height: 340px;
 					border-width: 3px; margin-bottom: 20px;
 					background-color: #aabbcc00;
 					">
-			<h1>Jogo da Forca</h1>
 
-			<h2>Escolha o tema:</h2>
+
+
 
 		</div>
 
@@ -244,6 +250,13 @@
 		"OBJETOS": [
 			'CAVALETE',
 			'GARRAFA',
+			'COPO',
+			'CARREGADOR',
+			'COMPUTADOR',
+			'TELEVISAO',
+			'GELADEIRA',
+			'MESA',
+
 
 
 		],
@@ -256,12 +269,31 @@
 
 
 		],
+		"LUGARES": [
+			'ASIA',
+			'AFRICA',
+			'EUROPA',
+			'AMERICA',
+			'ANTARTICA'
+
+
+		],
+		"CATEGORIA_02": [
+			'ASIA',
+			'AFRICA',
+			'EUROPA',
+			'AMERICA',
+			'ANTARTICA'
+
+
+		],
+
 
 	}
 
-	display_theme_options();
-	function display_theme_options() {
-		console.log('asd')
+	show_theme_options();
+	function show_theme_options() {
+		//console.log('{{ \n\n'+document.getElementById('body').innerHTML.split('<script')[0]  +'\n\n }}')
 		let r =
 			`<h2>Escolha o tema:</h2>`;
 		for (theme in themes) {
@@ -284,57 +316,62 @@
 
 	// https://www.coursera.org/learn/cobol-programming-vscode
 	function start_game(wrd) {
+		InputBlocked = false;
 		word = wrd
 		word_list = wrd.split('');
 		document.getElementById('board_container').innerHTML = `
-			<div id="board_container" class="bord col" 
-				style="
-					width: 300px;
-					height: 450px;
-					border-color: var(--tint04);
-					border-width: 2px;
-					margin: 20px;
-					padding-bottom: 30px;
-					padding-top: 30px;
-					
-					background-color:var(--bg)
-					"
-			>
 			
-				<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
-				<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
-				<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
-				<h3>${word}</h3>
-				<div class="col" > 
-					<div id='hd' style="font-size: 64px">O</div>
-					<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
-						<div id='la' style="font-size: 70px;">
-							/
-						</div>
-						<div id='bd' style="font-size: 54px;">
-							[_]
-						</div>
-						<div id='ra' style="font-size: 70px;">
-							\\
-						</div>
+			
+			<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
+			<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
+			<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
+			<h3>${word}</h3>
+			<div class="col" > 
+				<div id='hd' style="font-size: 64px;color: var(--bg)">O</div>
+				<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
+					<div id='la' style="font-size: 70px; color: var(--bg)">
+						/
 					</div>
-					<div class="row" style="margin-top: -16px;text-align: center; justify-content: center;">
-						<div id='ll' style="font-size: 70px;">
-							|
-						</div>
-						<div id='cr' style="font-size: 58px;">
-							'''
-						</div>
-						<div id='rl' style="font-size: 70px;">
-							|
-						</div>
+					<div id='bd' style="font-size: 54px;color: var(--bg)">
+						[_]
 					</div>
-
+					<div id='ra' style="font-size: 70px;color: var(--bg)">
+						\\
+					</div>
 				</div>
-				
-			</div>`;
+				<div class="row" style="margin-top: -16px;text-align: center; justify-content: center;">
+					<div id='ll' style="font-size: 70px;color: var(--bg)">
+						|
+					</div>
+					<div id='cr' style="font-size: 58px;color: var(--bg)">
+						'''
+					</div>
+					<div id='rl' style="font-size: 70px;color: var(--bg)">
+						|
+					</div>
+				</div>
 
+			</div>
+			
+		`;
 
+		update_correct_guess();
+	}
+
+	function update_correct_guess() {
+		let r = '';
+		win = true;
+		for (let lt of word) {
+			if (correct_guesses.includes(lt)) {
+				r += lt + ' ';
+			} else {
+				//se entrar aqui, existe ao menos uma letra faltando
+				win = false;
+				r += '_ ';
+			}
+		}
+		if (win) show_victory_screen();
+		document.getElementById('correct-letters').textContent = r;
 	}
 
 	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -345,15 +382,28 @@
 	let correct_guesses = [];
 	let word = '';
 	let word_list = [];
+	let InputBlocked = true;
+	function reset_game() {
+		InputBlocked = true;
+		//return window.location.reload();;
+		show_theme_options();
+		stick_apendages = ['hd', 'bd', 'la', 'rl', 'll', 'ra'];
+		incorrect_guesses = [];
+		correct_guesses = [];
+		word = '';
+		word_list = [];
+
+	}
 	//LEMBRAR DE TIRAR O CR JUNTO COM O HD
 
-	window.addEventListener("keydown", tryChar);
+	window.addEventListener("keydown", receiveInput);
 
-	function tryChar(event) {
+	function receiveInput(event) {
+		if(InputBlocked) return;
 		let k = event.key.toUpperCase();
-		//console.log(numbers.toUpperCase().split(''));
-		//console.log('> ',letters.toUpperCase().split('').includes(k));
+
 		console.log(k);
+
 		let msg = '';
 		if (['ALT', 'META', 'F12', 'F5', 'SHIFT'].includes(k)) return;
 
@@ -361,22 +411,27 @@
 		if (incorrect_guesses.includes(k)) msg = '"' + k + '" Já foi utilizada, NÃO FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.';
 		if (correct_guesses.includes(k)) msg = '"' + k + '" Já foi utilizada, FAZ PARTE DA PALAVRA. Seu palpite deve ser uma letra nova.';
 		const time_msg_lasts = 5000;
+
 		if (msg) {
 			let msg_cont = document.getElementById('msg-container');
 			msg_cont.textContent = msg;
-			msg_cont.style.color = 'var(--tint02)';
-			setTimeout(()=>{
+			msg_cont.style.color = 'var(--golden)';
+			setTimeout(() => {
 				msg_cont.style.color = 'var(--bg)';
-			},time_msg_lasts);
+			}, time_msg_lasts);
+
+			blockInput = false;
+
 			return;
 		}
 
 
 		if (word_list.includes(k)) {//correct guess
 			correct_guesses.push(k);
-			let r = '';
-			for (let lt of word) r += correct_guesses.includes(lt) ? lt : '_';
-			document.getElementById('correct-letters').textContent = r;
+			return update_correct_guess();
+			//checar vitoria
+
+
 		} else {//incorrect guess
 			incorrect_guesses.push(k);
 			document.getElementById('incorrect-letters').textContent =
@@ -385,10 +440,11 @@
 					''
 				);
 			//console.log('>> ',stick_apendages.pop());
-			document.getElementById(stick_apendages.pop()).style.color = 'var(--bg)'
-			if(stick_apendages.length===3) document.getElementById('cr').style.color = 'var(--bg)'
+			document.getElementById(stick_apendages.pop()).style.color = 'var(--red)';
+			if (stick_apendages.length === 0) return show_failure_screen();
+			if (stick_apendages.length === 3) document.getElementById('cr').style.color = 'var(--red)';
 		}
-		if(stick_apendages.length===0) alert('DEAD')
+
 		//CHECAR SE ACABOU O JOGO
 
 
@@ -401,6 +457,62 @@
 		// 	// Do Stuff
 		// }
 
+	}
+	function show_victory_screen() {
+		InputBlocked = true;
+		setTimeout(
+			() => {
+				document.getElementById('board_container').innerHTML = `
+					<div class="bord"
+							style="margin-top: auto;
+							margin-bottom: auto;
+							border-width: 5px;
+							border-color: var(--green);
+							padding: 12px;
+							background-color: var(--bg);
+							">
+							<h1
+								style="
+									width: 350px;
+									font-size: 64px;
+									color: var(--green)
+									
+									"
+							> 
+							VOCÊ VENCEU!! </h1>
+							<button class="btn" style="color:var(--green); border-color: var(--green)" onclick="reset_game()">JOGAR NOVAMENTE</button>
+						</div>
+					`;
+			},
+			200);
+	}
+	function show_failure_screen() {
+		InputBlocked = true;
+		setTimeout(
+			() => {
+				document.getElementById('board_container').innerHTML = `
+					<div class="bord"
+							style="margin-top: auto;
+							margin-bottom: auto;
+							border-width: 5px;
+							border-color: var(--red);
+							padding: 12px;
+							background-color: var(--bg);
+							">
+							<h1
+								style="
+									width: 350px;
+									font-size: 64px;
+									color: var(--red)
+									
+									"
+							> 
+							FIM DE JOGO! </h1>
+							<button class="btn" style="color:var(--red); border-color: var(--red)" onclick="reset_game()">JOGAR NOVAMENTE</button>
+						</div>
+					`;
+			},
+			1000);
 	}
 
 	function showCorrectLetter(c) {
