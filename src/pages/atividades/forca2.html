@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8" content-type="utf-08" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<style id="stl">
 		:root {
 			--bg: #222222;
@@ -17,6 +20,9 @@
 			--red: #bb3030;
 			--green: #11ee11;
 			--golden: #ffff11;
+
+
+
 		}
 
 		* {
@@ -24,11 +30,11 @@
 			color: var(--txt);
 			font-family: lato, sans-serif;
 
-			
+
 			border-style: solid;
 			border-width: 0px;
 			border-radius: 12px;
-			
+
 		}
 
 		h1 {
@@ -49,14 +55,23 @@
 			color: var(--txt);
 		}
 
-		p, h4 {
+		p,
+		h4 {
 			background-color: #aabbcc00;
 			font-size: 14px;
 			color: var(--txt);
 		}
 
-
-
+		.hdn{
+			width: 0px;
+			height: 0px;
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.shw{
+			visibility: visible;
+		}
 
 		.in {
 			border-color: var(--softBg);
@@ -79,7 +94,7 @@
 		}
 
 		::placeholder {
-			color: var(--tint010);
+			color: var(--tint02);
 			font-size: 12px;
 
 
@@ -103,7 +118,8 @@
 			min-width: 35px;
 			transition: background-color 0.2s;
 		}
-		.btn[del]{
+
+		.btn[del] {
 			color: var(--red);
 			border-width: 3px;
 			font-weight: 700;
@@ -200,8 +216,6 @@
 		}
 	</style>
 
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
 	<title>Jogo da Forca</title>
@@ -217,7 +231,7 @@
 				background-color:var(--txt);
 				padding:5px;
 			">Jogo da Forca</h1>
-
+		
 		<div id="board_container" class="col bord" style="
 					width: 80%;height: 400px;
 					min-height: 340px;
@@ -227,6 +241,8 @@
 		</div>
 	</div>
 </body>
+
+
 <script>
 	let library = {
 		"ANIMAIS": [
@@ -285,13 +301,69 @@
 
 	}
 	
-	show_theme_options();
+	cadastro_de_palavras();
+	function cadastro_de_palavras() {
+		let word_card = "xa";
+		let palavrasHtml = '';
+		let temasHtml = '';
+		for (let tema in library) {
+			//console.log('TEMA> ',tema)
+			for (let palavra of library[tema]) {
+				//console.log(' palavra   > ',palavra)
+				palavrasHtml += `\n
+					<div class="row hdn" 
+						style="
+							width: 300px;
+						 	margin-top: 20px;
+							background-color: var(--bg3)
+							"
+					>
+						<p style="min-width: 60%"> ${palavra}</p>	
+						<button class="btn"> Editar </button> 
+						<button class="btn" del> X </button> 
+					</div>
+				`;
+			}
+			temasHtml +=
+				`\n
+				<div 
+					style="
+						width: 300px;
+						margin-top: 20px;
+						padding: 20px;
+						background-color: var(--bg2);
+						"
+				>
+					<p style="font-size: 18px; color: var(--bg); font-weight: 800; color: var(--txt)"> ${tema}</p>
+					${palavrasHtml}
+				</div>\n`;
+		}
+
+
+		document.getElementById('board_container').innerHTML = `
+			<div class="bord" style="padding:20px"> 
+				<h2> PALAVRAS CATALOGADAS </h2>
+				
+				<div class="bord col" style="width: 100%; margin-top: 20px; padding-top: 20px; padding-bottom: 20px">
+					<input class="in hcenter" style="width:65%" id="add_word_in01" placeholder="PALAVRA"></input>	
+					<input class="in hcenter" style="width:65%" id="add_word_in02" placeholder="CATEGORIA"></input>	
+					<button class="btn"> Adicionar </button> 
+					
+				</div>
+				${temasHtml}
+				
+				
+			</div>
+		`;
+	}
+
+
+	//show_theme_options();
 	function show_theme_options() {
 		//console.log('{{ \n\n'+document.getElementById('body').innerHTML.split('<script')[0]  +'\n\n }}')
 		let r =
 			`<h2>Escolha o tema:</h2>`;
-		for (theme in library
-) {
+		for (theme in library) {
 			r += `\n<button class="btn" onclick="choose_theme('${theme}')">${theme}</button>`;
 		}
 
@@ -304,15 +376,13 @@
 		Math.random();
 		Math.random();
 		Math.random();
-		let word = library
-[chosen_theme][parseInt(Math.random() * 10) % library
-[chosen_theme].length];
+		let word = library[chosen_theme][parseInt(Math.random() * 10) % library[chosen_theme].length];
 		start_game(word, chosen_theme);
 	}
 
 
-	
-	function start_game(wrd,ctheme) {
+	// https://www.coursera.org/learn/cobol-programming-vscode
+	function start_game(wrd, ctheme) {
 		InputBlocked = false;
 		word = wrd
 		word_list = wrd.split('');
@@ -322,7 +392,7 @@
 			<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
 			<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
 			<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
-			<h4>${'Tema: '+ctheme}</h3>
+			<h4>${'Tema: ' + ctheme}</h3>
 			<div class="col" > 
 				<div id='hd' style="font-size: 64px;color: var(--bg)">O</div>
 				<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
@@ -374,7 +444,7 @@
 	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	const algarisms = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	let stick_apendages = [ 'la', 'rl', 'll', 'ra','bd','hd'];
+	let stick_apendages = ['la', 'rl', 'll', 'ra', 'bd', 'hd'];
 	let incorrect_guesses = [];
 	let correct_guesses = [];
 	let word = '';
@@ -396,7 +466,7 @@
 	window.addEventListener("keydown", receiveInput);
 
 	function receiveInput(event) {
-		if(InputBlocked) return;
+		if (InputBlocked) return;
 		let k = event.key.toUpperCase();
 
 		console.log(k);
@@ -509,7 +579,7 @@
 						</div>
 					`;
 			},
-			500);
+			1000);
 	}
 
 	function showCorrectLetter(c) {
