@@ -24,11 +24,11 @@
 			color: var(--txt);
 			font-family: lato, sans-serif;
 
-			
+
 			border-style: solid;
 			border-width: 0px;
 			border-radius: 12px;
-			
+
 		}
 
 		h1 {
@@ -49,7 +49,8 @@
 			color: var(--txt);
 		}
 
-		p, h4 {
+		p,
+		h4 {
 			background-color: #aabbcc00;
 			font-size: 14px;
 			color: var(--txt);
@@ -103,7 +104,8 @@
 			min-width: 35px;
 			transition: background-color 0.2s;
 		}
-		.btn[del]{
+
+		.btn[del] {
 			color: var(--red);
 			border-width: 3px;
 			font-weight: 700;
@@ -228,6 +230,52 @@
 	</div>
 </body>
 <script>
+
+	let list = [
+		1, 2, 3, 4, 5, 6,
+		[
+			'a', 'b', 'c'
+		],
+		[
+			'A', 'B', 'C'
+		],
+		[
+			'AA', 'BB', 'CC', [
+				'ha', 'hb', 'hc', [1, 2, 3, [2, 3, 4]]
+			]
+		],
+
+	];
+	flatten(list);
+	function flatten(input) {
+		let L = input;
+		let isFlat = true;
+		let result = [];
+		do {
+			result = [];
+			isFlat = true;
+			for (let i1 = 0; i1 < L.length; i1++) {
+				if (Array.isArray(L[i1])) {
+					isFlat = false;
+					for (it of L[i1]) result.push(it);
+				} else {
+					result.push(L[i1]);
+				}
+			}
+			L = [...result];
+
+		} while (!isFlat);
+		console.log('flat version > ', result);
+		return L;
+	}
+
+	let flat = flatten([1, 2, 3, 4, 5, [1, 2, 3, [4, 5]]]);
+	// => [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+	let sum = flat.reduce((prev, curr)=>prev+curr,0);
+	console.log('SOMA: ',sum);
+	
+
+
 	let library = {
 		"ANIMAIS": [
 			'CAVALO',
@@ -284,14 +332,14 @@
 
 
 	}
-	
+
 	show_theme_options();
 	function show_theme_options() {
 		//console.log('{{ \n\n'+document.getElementById('body').innerHTML.split('<script')[0]  +'\n\n }}')
 		let r =
 			`<h2>Escolha o tema:</h2>`;
 		for (theme in library
-) {
+		) {
 			r += `\n<button class="btn" onclick="choose_theme('${theme}')">${theme}</button>`;
 		}
 
@@ -305,14 +353,14 @@
 		Math.random();
 		Math.random();
 		let word = library
-[chosen_theme][parseInt(Math.random() * 10) % library
-[chosen_theme].length];
+		[chosen_theme][parseInt(Math.random() * 10) % library
+		[chosen_theme].length];
 		start_game(word, chosen_theme);
 	}
 
 
-	
-	function start_game(wrd,ctheme) {
+
+	function start_game(wrd, ctheme) {
 		InputBlocked = false;
 		word = wrd
 		word_list = wrd.split('');
@@ -322,7 +370,7 @@
 			<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
 			<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
 			<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
-			<h4>${'Tema: '+ctheme}</h3>
+			<h4>${'Tema: ' + ctheme}</h3>
 			<div class="col" > 
 				<div id='hd' style="font-size: 64px;color: var(--bg)">O</div>
 				<div class="row" style="margin-top: -14px;text-align: center; justify-content: center;">
@@ -374,7 +422,7 @@
 	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	const algarisms = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	let stick_apendages = [ 'la', 'rl', 'll', 'ra','bd','hd'];
+	let stick_apendages = ['la', 'rl', 'll', 'ra', 'bd', 'hd'];
 	let incorrect_guesses = [];
 	let correct_guesses = [];
 	let word = '';
@@ -396,7 +444,7 @@
 	window.addEventListener("keydown", receiveInput);
 
 	function receiveInput(event) {
-		if(InputBlocked) return;
+		if (InputBlocked) return;
 		let k = event.key.toUpperCase();
 
 		console.log(k);
