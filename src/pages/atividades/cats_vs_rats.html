@@ -11,35 +11,41 @@
 
 			--tint01: #0dc2e2;
 			--tint02: #ce810d;
+			--tint02: #ce810d;
 
 			--red: #dd3030;
 			--green: #11dd11;
 			--golden: #eedd11;
 
+			--w: 14;
+			--h: 12;
 
+		}
 
+		.aas {
+			background-color: red;
 		}
 
 		* {
 			background-color: var(--bg);
 			color: var(--txt);
 			font-family: lato, sans-serif;
-			
+
 			border-style: solid;
 			border-width: 0px;
 			border-radius: 12px;
-			
+
 		}
 
 		div {
-			
+
 			flex: 1;
 			display: flex;
 			background-color: #aabbcc00;
-			
-			
+
+
 		}
-	
+
 
 		h1 {
 			background-color: #aabbcc00;
@@ -125,11 +131,13 @@
 			border-radius: 12px;
 			background-color: #aabbcc00;
 		}
-		.inv{
+
+		.inv {
 			background-color: var(--txt);
 			color: var(--bg);
 		}
-		.coloredA{
+
+		.coloredA {
 			background-color: var(--tint01);
 			color: var(--bg);
 		}
@@ -173,15 +181,23 @@
 <body id="body" class="bord" style="width:95%;">
 	<div class="row bord" style="min-height:550px">
 		<div class="col coloredA">
-
+			<button class="btn" onclick="onBtnInit()">Init</button>
 
 		</div>
 		<div class="col" style="min-width: 55%;">
-			<div class="bord vcent" style="margin-left:10px; margin-right:10px;width: 100%; background-color: #11dd11; max-width: 500px; max-height: 500px;">
-
-
+			<div id="field" class="bord vcent" style="
+					margin-left:10px;
+					margin-right:10px;
+					width: 100%;
+					background-color: #114411;
+					
+					display: grid;
+					grid-template-columns: repeat(var(--w),1fr); 
+					grid-template-rows: repeat(var(--h),1fr); 
+					
+					">
 			</div>
-			
+
 		</div>
 		<div class="col bord">
 
@@ -194,7 +210,50 @@
 
 </body>
 <script>
+	const gridSize = [12, 14];
+	onBtnInit();
+	function init() {
+		console.log('Init');
+		let el = document.getElementById('field');
+		let html = '';
+		for (let i = 0; i < gridSize[0] * gridSize[1]; i++) {
+			let x = i % gridSize[1];
+			let y = parseInt(i / gridSize[0]);
+			html += `
+				<span id="tile_${x + '_' + y}"class="bord" onclick="onTileClick('${x},${y}')"
+					style="background-color: var(--blue)"
+				>
+					<p style="background-color: transparent">
+						<span style='color:var(--tint01); background-color: transparent'>${x}</span> 
+						<span style='color:var(--tint02); background-color: transparent'>${y}</span>
+					</p>
+				</span>`;
+		}
+		el.innerHTML = html;
+	}
 
+
+
+	//EVENTS ================================================================
+
+	//EVENTS ================================================================
+	//EVENTS ================================================================
+	//EVENTS ================================================================
+
+	//EVENTS ================================================================
+
+
+	function onBtnInit() {
+		init();
+
+	}
+	function onTileClick(inp){
+		[x,y] = inp.split(',');
+		console.log('clicked ',x,y);
+
+	}
+
+	//function onbtn
 
 </script>
 

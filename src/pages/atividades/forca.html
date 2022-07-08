@@ -290,7 +290,6 @@
 			'RINOCERONTE',
 			'AGUIA',
 			'FALCAO'
-
 		],
 		"OBJETOS": [
 			'CAVALETE',
@@ -306,7 +305,10 @@
 			'CADEIRA',
 			'TESOURO',
 			'MAPA',
-			'FOLHA'
+			'FOLHA',
+			'LIQUIDIFICADOR',
+			'AMASSADOR',
+			'ASPIRADOR'
 
 
 
@@ -320,12 +322,12 @@
 
 
 		],
-		"LUGARES": [
-			'ASIA',
-			'AFRICA',
-			'EUROPA',
-			'AMERICA',
-			'ANTARTICA'
+		"FRUTAS": [
+			'MORANGO',
+			'ABACATE',
+			'BANANA',
+			'MELAO',
+			'TANGERTINA'
 
 
 		],
@@ -335,7 +337,6 @@
 
 	show_theme_options();
 	function show_theme_options() {
-		//console.log('{{ \n\n'+document.getElementById('body').innerHTML.split('<script')[0]  +'\n\n }}')
 		let r =
 			`<h2>Escolha o tema:</h2>`;
 		for (theme in library
@@ -365,8 +366,6 @@
 		word = wrd
 		word_list = wrd.split('');
 		document.getElementById('board_container').innerHTML = `
-			
-			
 			<h2 id="msg-container" style="height: 50px; margin: 0; font-size:12px"> </h2>
 			<h2 id="incorrect-letters" style="height: 50px; margin: 0; color: var(--red)"> </h2>
 			<h2 id="correct-letters" style="height: 50px; margin: 0; color: var(--green)"> </h2>
@@ -397,7 +396,6 @@
 				</div>
 
 			</div>
-			
 		`;
 
 		update_correct_guess();
@@ -419,7 +417,7 @@
 		document.getElementById('correct-letters').textContent = r;
 	}
 
-	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','Ç'];
 	const algarisms = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 	let stick_apendages = ['la', 'rl', 'll', 'ra', 'bd', 'hd'];
@@ -446,7 +444,6 @@
 	function receiveInput(event) {
 		if (InputBlocked) return;
 		let k = event.key.toUpperCase();
-
 		console.log(k);
 
 		let msg = '';
@@ -469,14 +466,9 @@
 
 			return;
 		}
-
-
 		if (word_list.includes(k)) {//correct guess
 			correct_guesses.push(k);
 			return update_correct_guess();
-			//checar vitoria
-
-
 		} else {//incorrect guess
 			incorrect_guesses.push(k);
 			document.getElementById('incorrect-letters').textContent =
@@ -484,24 +476,10 @@
 					(prev, curr) => curr + ',' + prev,
 					''
 				);
-			//console.log('>> ',stick_apendages.pop());
 			document.getElementById(stick_apendages.pop()).style.color = 'var(--red)';
 			if (stick_apendages.length === 0) return show_failure_screen();
 			if (stick_apendages.length === 4) document.getElementById('cr').style.color = 'var(--red)';
 		}
-
-		//CHECAR SE ACABOU O JOGO
-
-
-		// //LETRA VALIDA
-		// //LETRA VALIDA POREM JA USADA
-		// //
-		// //LETRA INCORRETA
-		// //matar o boneco
-		// if (event.key == "key Name") {
-		// 	// Do Stuff
-		// }
-
 	}
 	function show_victory_screen() {
 		InputBlocked = true;
@@ -564,8 +542,6 @@
 		correct_guesses.push(c);
 		document.getElementById('')
 	}
-
-
 
 </script>
 
