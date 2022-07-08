@@ -22,7 +22,7 @@
 
 		}
 
-		
+
 		* {
 			background-color: var(--bg);
 			color: var(--txt);
@@ -33,7 +33,7 @@
 			border-radius: 12px;
 
 		}
-		
+
 		div {
 
 			flex: 1;
@@ -134,15 +134,16 @@
 			color: var(--bg);
 		}
 
-		.tile:hover {
-			border-radius: 32px;
-			background-color: red;
-		}
-		.tile{
-			transition: border-radius 1s;
-			background-color: red;
+
+		.tile {
+			transition: border-radius 600ms, background-color 400ms;
+			background-color: var(--bg);
 		}
 
+		.tile:hover {
+			border-radius: 16px;
+			background-color: red;
+		}
 
 
 		.coloredA {
@@ -177,11 +178,6 @@
 			margin-top: auto;
 			margin-bottom: auto;
 		}
-
-
-
-
-
 	</style>
 
 	<meta charset="UTF-8" />
@@ -223,32 +219,77 @@
 
 </body>
 <script>
+	let M = [];
+
 	const gridSize = [12, 14];
 	onBtnInit();
 	function init() {
+
+
+
 		console.log('Init');
 		let el = document.getElementById('field');
+		let elementIds = [];
 		let html = '';
+		// for (let iy = 0; iy < gridSize[0]; iy++) {
+		// 	let L = [];
+		// 	for (let ix = 0; ix < gridSize[1]; ix++) {
+		// 		console.log('X> ', ix, 'Y> ', iy);
+		// 		let id = `tile_${ix + '_' + iy}`;
+		// 		elementIds.push(id);
+		// 		html += `
+		// 		<div 
+		// 			id = "${id}" 
+		// 			class = "bord tile" 
+		// 			x = "${ix}" 
+		// 			y = "${iy}" 
+		// 			onclick = "onTileClick('${ix},${iy}')"
+					
+		// 		>
+		// 				<span class="vcent hcent" style='color:var(--tint01); background-color: transparent'>${x}</span> 
+		// 				<span class="vcent hcent" style='color:var(--tint02); background-color: transparent'>${y}</span>
+						
+		// 		</div>`;
+
+		// 	}
+		// }
+
 		for (let i = 0; i < gridSize[0] * gridSize[1]; i++) {
 			let x = i % gridSize[1];
 			let y = parseInt(i / gridSize[0]);
+			let id = `tile_${x + '_' + y}`;
+			elementIds.push(id);
 			html += `
-				<div id="tile_${x + '_' + y}"class="bord tile" onclick="onTileClick('${x},${y}')"
-					style="background-color: var(--blue)"
+				<div 
+					id = "${id}" 
+					class = "bord tile" 
+					x = "${x}" 
+					y = "${y}" 
+					onclick = "onTileClick('${x},${y}')"
+					
 				>
-					<p style="background-color: transparent">
-						<span style="visibility: hidden">
-							<span style='color:var(--tint01); background-color: transparent'>${x}</span> 
-							<span style='color:var(--tint02); background-color: transparent'>${y}</span>
-						</span>
-					</p>
+						<span class="vcent hcent" style='color:var(--tint01); background-color: transparent'>${x}</span> 
+						<span class="vcent hcent" style='color:var(--tint02); background-color: transparent'>${y}</span>
+						
 				</div>`;
 		}
 		el.innerHTML = html;
+		for (let it of elementIds) {
+			let element = document.getElementById(it);
+			element.onmouseenter = () => {
+				show(element.attributes);
+			}
+
+		}
 	}
 
 
 
+	function show({ x, y }) {
+		console.log('X> ', x, " Y>", y)
+
+	}
+
 	//EVENTS ================================================================
 
 	//EVENTS ================================================================
@@ -256,14 +297,14 @@
 	//EVENTS ================================================================
 
 	//EVENTS ================================================================
-	
+
 	function onBtnInit() {
 		init();
 
 	}
-	function onTileClick(inp){
-		[x,y] = inp.split(',');
-		console.log('clicked ',x,y);
+	function onTileClick(inp) {
+		[x, y] = inp.split(',');
+		console.log('clicked ', x, y);
 
 	}
 
