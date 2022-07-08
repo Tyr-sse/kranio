@@ -31,3 +31,55 @@ Operações do CTL, microserviços entre outros tanto de alta como de baixa pode
 [14:07] Jonathan Leandro Bulla
 Módulos cobol podem prover serviços os quais chamamos de operações IIB
 
+
+>>>>>>>
+
+
+======================================= Cursos Sugeridos ================================
+
+KDz: https://digitizar.intranet.bb.com.br/digitizar/course/view.php?id=25
+
+Nuvem: https://digitizar.intranet.bb.com.br/digitizar/course/view.php?id=249
+
+Site: http://www.cadcobol.com.br/
+
+Comunicação: trilhas de comunicação na UniBB.
+
+Cursos Unibb: cursos na unibb sobre assuntos diversos (Crédito, principalmente por enquanto).
+
+site containers: https://viniciuscampitelli.com/workshop-containers/
+
+=========================================================================================
+
+Algo que vou entender no futuro:
+
+[14:04] Jonathan Leandro Bulla
+COBOL
+
+Pesquisar módulos com termos associados
+
+No ROSCOE de desenvolvimento digite SOS 31
+
+Não existe ferramenta parecida no KDz por enquanto
+
+[14:06] Jonathan Leandro Bulla
+Operações do CTL, microserviços entre outros tanto de alta como de baixa podem ser pesquisados na PLATAFORMA BB - TECNOLOGIA - CONSTRUÇÃO - CATALOGO - Corporativo de TI
+
+[14:07] Jonathan Leandro Bulla
+Módulos cobol podem prover serviços os quais chamamos de operações IIB
+
+[terça-feira 14:06] Jonathan Leandro Bulla
+Operações do CTL, microserviços entre outros tanto de alta como de baixa podem ser pesquisados na PLATAFORMA BB - TECNOLOGIA - CONSTRUÇÃO - CATALOGO - Corporativo de TI
+
+[terça-feira 14:07] Jonathan Leandro Bulla
+Módulos cobol podem prover serviços os quais chamamos de operações IIB
+
+[terça-feira 14:07] Jonathan Leandro Bulla
+Se precisar de tutoriais de NATURAL ou outra tecnologia de mainframe pode postar aqui que vejo se posso ajudá-lo
+
+[terça-feira 14:08] Jonathan Leandro Bulla
+Vou ver se acho uma apostila antiga de COBOL aqui que eu usei para aprender. Se achar te passo.
+
+
+
+
