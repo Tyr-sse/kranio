@@ -1,0 +1,176 @@
+Questão #1
+
+Vale10
+
+Enunciado:
+
+Faça um programa que fornece o número de ocorrências de cada sobrenome da lista abaixo:
+const pessoas = [
+"Ana Peres",
+"Maria Silva",
+"Cleide Peres",
+"Carlos Levir",
+"Zeca Silva",
+"Paulo Souza",
+"Roger Guimarães",
+"Carlos de Almeida",
+"Mayk Souza",
+"Paula Guimarães",
+"Edson Souza",
+"Milena Komatsu",
+"Zé Souza",
+"Joana Batisteti",
+"Carla Zuko",
+"Bruna de Almeida",
+"Jonas Peres"
+]
+
+const exemploDeRetorno = {
+    Souza: 2,
+    Zuko: 1,    ...
+}
+
+Questão #2 __________________________________________
+
+Vale10
+
+Enunciado
+
+Uma doceria tem um painel para informar os doces disponíveis com as seguintes regras:
+
+🍰 64 pedaços
+
+🎂 8 bolos
+
+🍪 100 cookies
+
+🍩 20 donuts
+
+🍫 50 barras de chocolate
+
+🟢 + de 20% do estoque total
+
+🔴 - de 20% do estoque total
+
+❌️ estoque zerado para o doce
+
+Faça um programa para que o caixa da doceria possa controlar o estoque, ou seja, permite adicionar ou subtrair um valor do estoque de um doce e mostre para os clientes uma indicação de estoque da seguinte forma:
+
+🍰 🟢
+
+🎂 🟢
+
+🍪 🔴
+
+🍩 🔴
+
+🍫 ❌️
+
+[quarta-feira 13:58] Vinicius do Couto Pinheiro
+Questão #5
+Vale10
+Enunciado
+Faça um programa que crie um array de 100000 posições e insira trevos de quatro folhas (🍀) caso o valor um número sorteado de 0 a 1 seja superior a 0.9999 e trevos de três folhas (☘️), caso contrário. Descubra também se o array contém algum trevo de quatro folhas e, em caso positivo, a primeira posição do array que o encontramos.
+
+[quarta-feira 13:58] Vinicius do Couto Pinheiro
+Questão #6
+Vale10
+Enunciado
+De um array com números aleatórios de 100 elementos, gere um novo array apenas com números divisíveis por 3.
+
+[quarta-feira 13:58] Vinicius do Couto Pinheiro
+Questão #7
+Vale10
+Enunciado
+Faça um programa que receba 5 números do usuário e os armazene de maneira ordenada em um array.
+
+[quarta-feira 13:58] Vinicius do Couto Pinheiro
+Questão #8
+Vale10
+Enunciado
+Calcule as médias das provas para os alunos abaixo:
+JonasHistória: 9,5,6Matemática: 3, 7, 8Física: 10, 10, 6BiaHistória: 6,5,6Matemática: 7, 7, 8Física: 8, 6, 9RenataHistória: 8,7,9Matemática: 9, 7, 7Física: 5, 5, 8
+
+[quarta-feira 13:59] Vinicius do Couto Pinheiro
+Questão #9
+Vale10
+Enunciado
+Calcule a soma dos itens do carrinho. aplique uma taxa de 15 reais de frete e imprima o total formatado em reais.
+
+[quarta-feira 13:59] Vinicius do Couto Pinheiro
+const carrinho = [
+  {
+    produto: "Camisa branca:",
+    quantidade: 4,
+    valorDaUnidade: 25.50,
+  },
+  {
+    produto: "Calça jeans:",
+    quantidade: 2,
+    valorDaUnidade: 180.25,
+  },{    produto: "Jaqueta",    quantidade: 1,    valorDaUnidade: 299.99,  },  {    produto: "Tênis de Corrida",    quantidade: 1,    valorDaUnidade: 150.50,  },  {    produto: "Par de meias",    quantidade: 3,    valorDaUnidade: 15.00,  },  {    produto: "Relógio esportivo",    quantidade: 1,    valorDaUnidade: 350.00,  },]
+
+[quarta-feira 13:59] Vinicius do Couto Pinheiro
+Questão #10
+Vale10
+Enunciado
+Utilize o método filter para determinar quais restaurantes estão abertos no horário atual
+
+[quarta-feira 13:59] Vinicius do Couto Pinheiro
+ const restaurantes = [
+   {
+     nome: 'Pizzaria do Mario',
+     horario_abertura: 14,
+     horario_fechamento: 23
+   },
+   {
+     nome: 'Churrascaria do Ronaldo',
+     horario_abertura: 11,
+     horario_fechamento: 14,
+   },
+   {
+     nome: 'Bar do Zeca',
+     horario_abertura: 12,
+     horario_fechamento: 2,
+   },
+   {
+     nome: 'Doceria da Mara',
+     horario_abertura: 8,
+     horario_fechamento: 20,
+   },
+ ]
+
+[quarta-feira 14:00] Vinicius do Couto Pinheiro
+Questão #11
+Vale10
+Enunciado
+Gere chaves e pontuações aleatórias (de 0 a 3 vitórias) para 4 chaves esportivas de 4 países cada e em seguida filtre os 2 melhores times de cada chave que avançarão para a próxima fase.
+
+[quarta-feira 14:00] Vinicius do Couto Pinheiro
+Questão #12
+Vale10
+Enunciado
+Faça um programa que receba uma área de atuação e aplique um aumento de 5% no salário dos funcionários que participam da área determinada e retorne os dados dos funcionários que tiveram aumento.
+Dados:
+
+[quarta-feira 14:00] Vinicius do Couto Pinheiro
+const funcionarios = [
+        {
+            nome: "Renata",
+            area: "Vendas",
+            salario: 3000,
+        },
+        {
+            nome: "Marcela",
+            area: "Dev",
+            salario: 8000,
+        },
+        {
+            nome: "Jonas",
+            area: "Vendas",
+            salario: 3500,
+        },       {            nome: "Carlos",            area: "Vendas",            salario: 2000,        },        {            nome: "Rick",            area: "Dev",            salario: 7000,        },        {            nome: "Yara",            area: "Finanças",            salario: 6500,        },        {            nome: "Zeca",            area: "Finanças",            salario: 5500,        },       {            nome: "Josué",            area: "RH",            salario: 4500,        },        {            nome: "Sheila",            area: "RH",            salario: 5500,        },        {            nome: "Cleber",            area: "Finanças",            salario: 4500,        },    ]
+
+[quarta-feira 14:01] Vinicius do Couto Pinheiro
+FEITO!!!
+

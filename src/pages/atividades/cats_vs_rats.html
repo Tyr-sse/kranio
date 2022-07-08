@@ -22,10 +22,7 @@
 
 		}
 
-		.aas {
-			background-color: red;
-		}
-
+		
 		* {
 			background-color: var(--bg);
 			color: var(--txt);
@@ -36,7 +33,7 @@
 			border-radius: 12px;
 
 		}
-
+		
 		div {
 
 			flex: 1;
@@ -137,6 +134,17 @@
 			color: var(--bg);
 		}
 
+		.tile:hover {
+			border-radius: 32px;
+			background-color: red;
+		}
+		.tile{
+			transition: border-radius 1s;
+			background-color: red;
+		}
+
+
+
 		.coloredA {
 			background-color: var(--tint01);
 			color: var(--bg);
@@ -169,6 +177,11 @@
 			margin-top: auto;
 			margin-bottom: auto;
 		}
+
+
+
+
+
 	</style>
 
 	<meta charset="UTF-8" />
@@ -220,14 +233,16 @@
 			let x = i % gridSize[1];
 			let y = parseInt(i / gridSize[0]);
 			html += `
-				<span id="tile_${x + '_' + y}"class="bord" onclick="onTileClick('${x},${y}')"
+				<div id="tile_${x + '_' + y}"class="bord tile" onclick="onTileClick('${x},${y}')"
 					style="background-color: var(--blue)"
 				>
 					<p style="background-color: transparent">
-						<span style='color:var(--tint01); background-color: transparent'>${x}</span> 
-						<span style='color:var(--tint02); background-color: transparent'>${y}</span>
+						<span style="visibility: hidden">
+							<span style='color:var(--tint01); background-color: transparent'>${x}</span> 
+							<span style='color:var(--tint02); background-color: transparent'>${y}</span>
+						</span>
 					</p>
-				</span>`;
+				</div>`;
 		}
 		el.innerHTML = html;
 	}
@@ -241,8 +256,7 @@
 	//EVENTS ================================================================
 
 	//EVENTS ================================================================
-
-
+	
 	function onBtnInit() {
 		init();
 
