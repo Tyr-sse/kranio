@@ -208,9 +208,30 @@
 			</div>
 
 		</div>
-		<div class="col bord">
-
-
+		<div id="info-panel" class="col bord">
+			<div id="info-basic" class="bord" style="
+				 width: 80%;
+				 max-height: 100px;
+				 margin-top: 20px;
+				 margin-bottom: 0px;
+				">
+				Estágio
+			</div>
+			<div id="info-actions" class="bord" style="
+				 width: 80%;
+				 max-height: 200px;
+				 margin-top: 2px;
+				 margin-bottom: 0px;
+				">
+				<p>Instruções</p>
+			</div>
+			<div id="info-tile" class="bord" style="
+				 width: 80%;
+				 margin-top: 2px;
+				 margin-bottom: 20px;
+				">
+				Ações
+			</div>
 		</div>
 
 	</div>
@@ -219,74 +240,342 @@
 
 </body>
 <script>
-	let M = [];
-
-	const gridSize = [12, 14];
-	onBtnInit();
-	function init() {
 
 
-
-		console.log('Init');
-		let el = document.getElementById('field');
-		let elementIds = [];
-		let html = '';
-		// for (let iy = 0; iy < gridSize[0]; iy++) {
-		// 	let L = [];
-		// 	for (let ix = 0; ix < gridSize[1]; ix++) {
-		// 		console.log('X> ', ix, 'Y> ', iy);
-		// 		let id = `tile_${ix + '_' + iy}`;
-		// 		elementIds.push(id);
-		// 		html += `
-		// 		<div 
-		// 			id = "${id}" 
-		// 			class = "bord tile" 
-		// 			x = "${ix}" 
-		// 			y = "${iy}" 
-		// 			onclick = "onTileClick('${ix},${iy}')"
-					
-		// 		>
-		// 				<span class="vcent hcent" style='color:var(--tint01); background-color: transparent'>${x}</span> 
-		// 				<span class="vcent hcent" style='color:var(--tint02); background-color: transparent'>${y}</span>
-						
-		// 		</div>`;
-
-		// 	}
-		// }
-
-		for (let i = 0; i < gridSize[0] * gridSize[1]; i++) {
-			let x = i % gridSize[1];
-			let y = parseInt(i / gridSize[0]);
-			let id = `tile_${x + '_' + y}`;
-			elementIds.push(id);
-			html += `
+	function newTileHtml(id, x, y) {
+		return `
 				<div 
 					id = "${id}" 
 					class = "bord tile" 
 					x = "${x}" 
 					y = "${y}" 
-					onclick = "onTileClick('${x},${y}')"
 					
 				>
 						<span class="vcent hcent" style='color:var(--tint01); background-color: transparent'>${x}</span> 
 						<span class="vcent hcent" style='color:var(--tint02); background-color: transparent'>${y}</span>
 						
 				</div>`;
-		}
-		el.innerHTML = html;
-		for (let it of elementIds) {
-			let element = document.getElementById(it);
-			element.onmouseenter = () => {
-				show(element.attributes);
+	}
+
+
+	let M = [];
+
+	const gridSize = [12, 14];
+	onBtnInit();
+	function init() {
+		let x = `
+		OCOBOL >>SOURCE FORMAT IS FIXED
+      *> ***************************************************************
+      *><* ================
+      *><* indexing example
+      *><* ================
+      *><* :Author:    Brian Tiffin
+      *><* :Date:      17-Feb-2009
+      *><* :Purpose:   Fun with Indexed IO routines
+      *><* :Tectonics: cobc -x indexing.cob
+      *> ***************************************************************
+       identification division.
+       program-id. indexing.
+
+       environment division.
+       configuration section.
+
+       input-output section.
+       file-control.
+          select optional indexing
+          assign to "indexing.dat"
+          organization is indexed
+          access mode is dynamic
+          record key is keyfield of indexing-record
+          alternate record key is splitkey of indexing-record
+              with duplicates
+          .
+
+      *> ** OpenCOBOL does not yet support split keys **
+      *>  alternate record key is newkey
+      *>      source is first-part of indexing-record
+      *>                last-part of indexing-record
+      *>      with duplicates
+
+       data division.
+       file section.
+       fd indexing.
+       01 indexing-record.
+          03 keyfield          pic x(8).
+          03 splitkey.
+             05 first-part     pic 99.
+             05 middle-part    pic x.
+             05 last-part      pic 99.
+          03 data-part         pic x(54).
+
+       working-storage section.
+       01 display-record.
+          03 filler            pic x(4)  value spaces.
+          03 keyfield          pic x(8).
+          03 filler            pic xx    value spaces.
+          03 splitkey.
+             05 first-part     pic z9.
+             05 filler         pic x     value space.
+             05 middle-part    pic x.
+             05 filler         pic xx    value all "+".
+             05 last-part      pic z9.
+          03 filler            pic x(4)  value all "-".
+          03 data-part         pic x(54).
+
+      *> control break
+       01 oldkey               pic 99x99.
+
+      *> In a real app this should well be two separate flags
+       01 control-flag         pic x.
+          88 no-more-duplicates          value high-value
+             when set to false is              low-value.
+          88 no-more-records             value high-value
+             when set to false is              low-value.
+
+      *> ***************************************************************
+       procedure division.
+
+      *> Open optional index file for read write
+       open i-o indexing
+
+      *> populate a sample database
+       move "1234567800a01some 12345678 data here" to indexing-record
+       perform write-indexing-record
+       move "8765432100a01some 87654321 data here" to indexing-record
+       perform write-indexing-record
+       move "1234876500a01some 12348765 data here" to indexing-record
+       perform write-indexing-record
+       move "8765123400a01some 87651234 data here" to indexing-record
+       perform write-indexing-record
+
+       move "1234567900b02some 12345679 data here" to indexing-record
+       perform write-indexing-record
+       move "9765432100b02some 97654321 data here" to indexing-record
+       perform write-indexing-record
+       move "1234976500b02some 12349765 data here" to indexing-record
+       perform write-indexing-record
+       move "9765123400b02some 97651234 data here" to indexing-record
+       perform write-indexing-record
+
+       move "1234568900c13some 12345689 data here" to indexing-record
+       perform write-indexing-record
+       move "9865432100c13some 98654321 data here" to indexing-record
+       perform write-indexing-record
+       move "1234986500c13some 12349865 data here" to indexing-record
+       perform write-indexing-record
+       move "9865123400c13some 98651234 data here" to indexing-record
+       perform write-indexing-record
+
+      *> close it ... not necessary, but for the example
+       close indexing
+
+      *> clear the record space for this example
+       move spaces to indexing-record
+
+      *> open the data file again
+       open i-o indexing
+
+      *> read all the duplicate 00b02 keys
+       move 00 to first-part of indexing-record
+       move "b" to middle-part of indexing-record
+       move 02 to last-part of indexing-record
+
+      *> using read key and then next key / last key compare
+       set no-more-duplicates to false
+       perform read-indexing-record
+       perform read-next-record
+           until no-more-duplicates
+
+      *> read by key of reference ... the cool stuff
+       move 00 to first-part of indexing-record
+       move "a" to middle-part of indexing-record
+       move 02 to last-part of indexing-record
+
+      *> using start and read next
+       set no-more-records to false
+       perform start-at-key
+       perform read-next-by-key
+           until no-more-records
+
+      *> read by primary key of reference
+       move "87654321" to keyfield of indexing-record
+
+      *>
+       set no-more-records to false
+       perform start-prime-key
+       perform read-previous-by-key
+           until no-more-records
+
+      *> and with that we are done with indexing sample
+       close indexing
+
+       goback.
+      *> ***************************************************************
+
+      *><* Write paragraph
+       write-indexing-record.
+         write indexing-record
+             invalid key
+                 display
+                     "rewrite key: " keyfield of indexing-record
+                 end-display
+                   rewrite indexing-record
+                       invalid key
+                           display
+                               "really bad key: "
+                               keyfield of indexing-record
+                           end-display
+                   end-rewrite
+         end-write
+       .
+
+      *><* read by alternate key paragraph
+       read-indexing-record.
+           display "Reading: " splitkey of indexing-record end-display
+           read indexing key is splitkey of indexing-record
+         invalid key
+             display
+                "bad read key: " splitkey of indexing-record
+             end-display
+               set no-more-duplicates to true
+           end-read
+       .
+
+      *><* read next sequential paragraph
+       read-next-record.
+           move corresponding indexing-record to display-record
+           display display-record end-display
+           move splitkey of indexing-record to oldkey
+
+           read indexing next record
+               at end set no-more-duplicates to true
+               not at end
+                   if oldkey not equal splitkey of indexing-record
+                       set no-more-duplicates to true
+                   end-if
+           end-read
+       .
+
+      *><* start primary key of reference paragraph
+       start-prime-key.
+           display "Prime < " keyfield of indexing-record end-display
+           start indexing
+              key is less than
+                  keyfield of indexing-record
+              invalid key
+                  display
+                      "bad start: " keyfield of indexing-record
+                  end-display
+                  set no-more-records to true
+              not invalid key
+                  read indexing previous record
+                      at end set no-more-records to true
+                  end-read
+           end-start
+       .
+
+      *><* read previous by key of reference paragraph
+       read-previous-by-key.
+           move corresponding indexing-record to display-record
+           display display-record end-display
+
+           read indexing previous record
+               at end set no-more-records to true
+           end-read
+       .
+      *><* start alternate key of reference paragraph
+       start-at-key.
+           display "Seeking >= " splitkey of indexing-record end-display
+           start indexing
+              key is greater than or equal to
+                  splitkey of indexing-record
+              invalid key
+                  display
+                      "bad start: " splitkey of indexing-record
+                  end-display
+                  set no-more-records to true
+              not invalid key
+                  read indexing next record
+                      at end set no-more-records to true
+                  end-read
+           end-start
+       .
+
+      *><* read next by key of reference paragraph
+       read-next-by-key.
+           move corresponding indexing-record to display-record
+           display display-record end-display
+
+           read indexing next record
+               at end set no-more-records to true
+           end-read
+       .
+       end program indexing.
+      *><*
+      *><* Last Update: 20090220
+		`.toUpperCase();
+		console.log(x)
+		let elementIds = [];
+		let fieldHtml = '';
+		console.log('generate tiles ');
+		for (let y = 0; y < gridSize[1]; y++) {
+			console.log('new line');
+			for (let x = 0; x < gridSize[0]; x++) {
+				let id = `tile_${x + '_' + y}`;
+				elementIds.push(id);
+				//console.log('generated> ', id);
+				fieldHtml += newTileHtml(id, x, y);
+
+				//
+
 			}
+		}
+		document.getElementById('field').innerHTML = fieldHtml;
+		for (let id of elementIds) {
+			let element = document.getElementById(id);
+			element.addEventListener(
+				'mouseenter',
+				() => {
+					onTileMouseEnter(element);
+				}
+			);
+			element.addEventListener(
+				'onclick',
+				() => {
+					onTileClick(element);
+				}
+			);
+			element.addEventListener(
+				'mouseleave',
+				() => {
+					//console.log('s');
+					onTileMouseLeave(element);
+				}
+			);
 
 		}
+
+
+
 	}
 
 
 
-	function show({ x, y }) {
-		console.log('X> ', x, " Y>", y)
+
+
+
+	function onTileMouseEnter(element) {
+		//console.log('\n', element.id, ' onTileMouseEnter: (', element.attributes.x, ",", element.attributes.y, ")");
+
+	}
+	function onTileMouseLeave(element) {
+
+		//console.log('\n', element.id, ' onTileMouseLeave (', element.attributes.x, ",", element.attributes.y, ")");
+
+	}
+
+	function onTileClick(element) {
+		//console.log('\n', element.id, '\ onTileClick: (', element.attributes.x, ",", element.attributes.y, ")");
 
 	}
 
@@ -300,11 +589,6 @@
 
 	function onBtnInit() {
 		init();
-
-	}
-	function onTileClick(inp) {
-		[x, y] = inp.split(',');
-		console.log('clicked ', x, y);
 
 	}
 
