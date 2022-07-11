@@ -9,19 +9,23 @@
        ENVIRONMENT DIVISION.
         INPUT-OUTPUT SECTION.
          FILE-CONTROL.
-          SELECT IN-FILE ASSIGN TO 'FILE_TO_BE_READ.txt'
+          SELECT IN-FILE ASSIGN TO 'C:\Users\F9329132\foile.txt'
           ORGANIZATION IS LINE SEQUENTIAL
+
           FILE STATUS IS STTS.
 
 
        DATA DIVISION.
         FILE SECTION.
          FD IN-FILE.
-          01  IN-REC PIC X(100) VALUE '.'.
+          01  IN-REC PIC X(5) VALUE '.'.
 
 
         WORKING-STORAGE SECTION.
          77 CT                     PIC 99 VALUE ZEROS.
+
+         77 WR                     PIC 99 VALUE ZEROS.
+
          77 STTS                   PIC XX VALUE '..'.
          77 INF                    PIC X  VALUE '_'.
          77 CR                     PIC X  VALUE 'M'.
@@ -41,19 +45,28 @@
            OPEN INPUT IN-FILE.
 
           002-READ.
-           DISPLAY CT '- TRYING TO READ'.
-           READ IN-FILE NEXT RECORD INTO XE.
-           DISPLAY '|' XE '|' .
-
-
-
-
+           DISPLAY CT '- TRYING TO READ '
            ADD 1 TO CT.
+
+           READ IN-FILE
+            AT END
+             DISPLAY 'EOF'
+            NOT AT END
+             DISPLAY 'CONTINUE'
+             ADD 1 TO WR
+           END-READ.
+
+           DISPLAY STTS '|' IN-REC '|' .
+
+
+
+
 
 
 
 
           999-FIN.
-           DISPLAY "BYE"
+           CLOSE IN-FILE.
+           DISPLAY "BYE WR> " WR.
            STOP RUN.
        END PROGRAM FILE-HANDLER-01.
