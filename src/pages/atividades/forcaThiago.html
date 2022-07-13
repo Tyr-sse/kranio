@@ -4,7 +4,7 @@
 <head>
 	<style id="stl">
 		:root {
-			--bg : #222222;
+			--bg: #222222;
 			--bg2: #333333;
 			--bg3: #444444;
 			--bg4: #555555;
@@ -211,7 +211,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-	<title>Rick & Morty Characters</title>
+	<title>Jogo da Forca</title>
 </head>
 
 <body id="body" class="bord" style="width:95%;">
@@ -223,7 +223,7 @@
 				color:var(--bg);
 				background-color:var(--txt);
 				padding:5px;
-			" onclick="show_theme_options()">Rick & Morty</h1>
+			" onclick="show_theme_options()">Jogo da Forca</h1>
 
 		<div id="board_container" class="col bord" style="
 					width: 90%;
@@ -236,122 +236,104 @@
 	</div>
 </body>
 <script>
-	
-
-  
-	let local_library = 
-	{
-		"Human":
-			[
-				{
-					"id":1,
-					"name":"Rick Sanchez",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-					"episodes":51
-				},
-				{
-					"id":2,
-					"name":"Morty Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-					"episodes":51
-				},
-				{
-					"id":3,
-					"name":"Summer Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-					"episodes":42
-				},
-				{
-					"id":4,
-					"name":"Beth Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/4.jpeg",
-					"episodes":42
-				},
-				{
-					"id":5,
-					"name":"Jerry Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/5.jpeg",
-					"episodes":39
-				}
-			],
-		"ROBOT": 
-			[
-				{
-					"id":1,
-					"name":"Rick Sanchez",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-					"episodes":51
-				},
-				{
-					"id":2,
-					"name":"Morty Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-					"episodes":51
-				},
-				{
-					"id":3,
-					"name":"Summer Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-					"episodes":42
-				},
-				{
-					"id":4,
-					"name":"Beth Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/4.jpeg",
-					"episodes":42
-				},
-				{
-					"id":5,
-					"name":"Jerry Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/5.jpeg",
-					"episodes":39
-				}
-			]  
-		};
+	let local_library = {
+		"ANIMAIS": [
+			'CAVALO',
+			'GIRAFA',
+			'HIPOPOTAMO',
+			'ZEBRA',
+			'ELEFANTE',
+			'TARTARUGA',
+			'CAMELO',
+			'ASNO',
+			'TATU',
+			'RINOCERONTE',
+			'AGUIA',
+			'FALCAO'
+		],
+		"OBJETOS": [
+			'CAVALETE',
+			'GARRAFA',
+			'COPO',
+			'CARREGADOR',
+			'COMPUTADOR',
+			'TELEVISAO',
+			'GELADEIRA',
+			'MESA',
+			'CAMA',
+			'XICARA',
+			'CADEIRA',
+			'TESOURO',
+			'MAPA',
+			'FOLHA',
+			'LIQUIDIFICADOR',
+			'AMASSADOR',
+			'ASPIRADOR'
 
 
-	//downloadLib()
-	function downloadLib(){
-  		fetch('./personagens.json').then(data => data.json().then(data => local_library = data));
+
+		],
+		"CONTINENTES": [
+			'ASIA',
+			'AFRICA',
+			'EUROPA',
+			'AMERICA',
+			'ANTARTICA'
+
+
+		],
+		"FRUTAS": [
+			'MORANGO',
+			'ABACATE',
+			'BANANA',
+			'MELAO',
+			'TANGERTINA'
+
+
+		],
+
+
+	}
+	//ATV======
+	q01();
+	function q01() {
+		const pessoas = [
+			"Ana Peres",
+			"Maria Silva",
+			"Cleide Peres",
+			"Carlos Levir",
+			"Zeca Silva",
+			"Paulo Souza",
+			"Roger Guimarães",
+			"Carlos de Almeida",
+			"Mayk Souza",
+			"Paula Guimarães",
+			"Edson Souza",
+			"Milena Komatsu",
+			"Zé Souza",
+			"Joana Batisteti",
+			"Carla Zuko",
+			"Bruna de Almeida",
+			"Jonas Peres"
+		];
+		let L = [];
+		for(let person of pessoas){
+			let surname = person.split(' ')[1];
+
+		}
+
+
 	}
 
-	show_local_library();
+
+
+	//open_local_library();
 	//show_theme_options();//SHOW MAIN SCREEN
 	function show_theme_options() {
-		let r =`
+		let r = `
 			<div style="display:flex; flex-direction: column; justify-content:space-evenly">
 				<button class="btn hcent" 
-					onclick="show_local_library()" 
+					onclick="open_local_library()" 
 					style="
 						border-color: tranparent;
 						font-size: 16px;
@@ -426,7 +408,7 @@
 
 			</div>
 		`;
-   
+
 		update_correct_guess();
 	}
 
@@ -571,69 +553,34 @@
 		correct_guesses.push(c);
 		document.getElementById('')
 	}
-	function show_local_library() {
+	function open_local_library() {
 		let r = `
 			<div 
 				style="
 					display: flex;
 					flex-direction: column;
-					justify-content: center;
-					margin-top: 20px;
+					justify-content: center
 				"
 			>
-			
-			
+			<button 
+				class="btn"
+				onclick="show_theme_options()"
+				style="margin: 10px; font-size: 20px"
+			>Voltar ao Menu</button>
 			
 				`;
 
-		for (let especie in local_library) {
+		for (let categ in local_library) {
 			r += `<div class="bord" style="flex:1;background-color:var(--bg2);margin-top: 20px">
-				   <h2>${especie}</h2>
-				   <div  
-						style="
-							margin-top: 20px
-							display: flex;
-							flex-direction: row;
-							justify-content: center;
-							background-color: transparent"
-							height: 20px;
-							
-					>
-						<input 
-							class = "in"
-							style = "
-								max-width: 120px;
-								"
-							id = "input_add_${especie}"
-							value=' '
-							placeholder="EXCLUIR ITEM!!"
-							>
-						</input>
-						<button class="btn" onclick="addItem('${especie}')" 
-							style="
-								border-radius: 20px;
-								border-width: 2px;
-								border-color:var(--green);
-								color:var(--green);
-								background-color:transparent;
-								
-								
-								"
-						>Add</button>
-						
-					</div>
-
-
-
+				   <h2>${categ}</h2>
 				`;
 			let indx = 0;
-			for (let it of local_library[especie]) {
-				r += `
-					<div style="
-						display: flex;
-						flex-direction: row;
-						justify-content: center;
-						background-color: transparent"
+			for (let it of local_library[categ]) {
+				r += `<div style="
+						     display: flex;
+							 flex-direction: row;
+							 justify-content: center;
+							 background-color: transparent"
 					>
 					    <input 
 							class = "in"
@@ -641,11 +588,11 @@
 							style = "
 								max-width: 120px;
 								"
-							id = "input_${especie}_${indx}"
-							value='${it["name"]}'
+							id = "input_${categ}_${indx}"
+							value=${it}
 							placeholder="EXCLUIR ITEM!!"
 							></input>
-						<button class="btn" onclick="updateItem('${especie}',${indx},'input_${especie}_${indx}')">Update</button>
+						<button class="btn" onclick="updateItem('${categ}',${indx},'input_${categ}_${indx}')">Update</button>
 						<button class="btn" 
 							style="
 								background-color: var(--bg2);
@@ -654,7 +601,7 @@
 								font-size: 20px;
 								border-color: var(--red);
 								border-width: 2px;
-								" onclick="deleteItem('${especie}',${indx},'input_${especie}_${indx}')">X</button>
+								" onclick="deleteItem('${categ}',${indx},'input_${categ}_${indx}')">X</button>
 							 
 					</div>`;
 				indx++;
@@ -665,22 +612,17 @@
 
 		document.getElementById('board_container').innerHTML = r;
 	}
-// ==================================================
-	function updateItem(especie, index, id) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
-		let novo_nome = document.getElementById(id).value;
-		local_library[especie][index]["name"] = novo_nome;
-	}
-	function deleteItem(especie, index, id) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
-		if(!confirm("Tem certeza que quer excluir o registro? ")) return;
-		local_library[especie].splice(index,1);
-		show_local_library();
-	}
-	function addItem(){
-		let v = document.getElementById('input_add').value;
-		console.log('ADD ')
+	// ==================================================
+	function updateItem(categoria, index, novo_valor) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
+		let val = document.getElementById(id).value;
+		console.log('Update: ', categoria, index, '>', novo_valor);
 
 	}
+	function deleteItem(categoria, index, id) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
+		let val = document.getElementById(id).value;
+		console.log('EXCLUIR> ', categoria, index, '(' + val + ')');//, val);
 
+	}
 </script>
 
 </html>

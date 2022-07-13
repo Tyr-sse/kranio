@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<META charset="utf-8">
+<META name="viewport" content="width=device-width, initial-scale=1.0">
+<META name="author" content="Frank da Cruz">
+<LINK REL="stylesheet" HREF="/cu/computinghistory/timeline.css">
+<title>The IBM 029 Key Punch</title>
+<style>
+  div.havetranslations { display:none }
+  div.havetranslations div { margin:0; padding-bottom:8px; }
+  blockquote { margin-left:16px; margin-right:16px; font-size:84% }
+  table { font-size:inherit; }
+  h3 { border-top:2px solid grey }
+  body { font-size:16px;
+         font-family:calibri, ariel narrow, arial, sans-serif, times;
+         background:white;
+         color:black;
+       }
+</style>
+</head>
+
+<body style="margin:0;">
+
+<!--BANNER-->
+<div onclick="document.location.href='/cu/computinghistory/index.html';"
+ title="Go to Columbia University Computing History home page"
+ style="text-align:right; font-size:19px; font-family:times; color:grey;
+  cursor:pointer; border-bottom:1px solid grey; padding:0px 0 6px 0; margin:0">
+<i>Columbia University Computing History&nbsp;&nbsp;&nbsp;</i>
+</div><!--BANNER-->
+
+<div style="width:96%; max-width:740px; margin:0 10px 10px 12px"><!--CONTENT-->
+
+<div style="border-bottom:0px solid lightgrey; margin:0 32px 0 16px">
+<i>Translations</i>&nbsp; (<a href="#translations">see below</a> for
+credits):
+</div>
+
+<div class="languagebuttons"
+ style="margin:10px; text-align:center; line-height:1.6;
+  margin-left:40px; text-align:left">
+
+<link-button>
+<a title="See Norwegian translation of this page"
+ href="https://scandicsciences.com/nb-no/the-ibm-029-key-punch/">Norwegian |
+Norsk</a></link-button>
+
+</div>
+
+<h2 id="top" style="margin-top:0; border-top:1px solid grey">
+The IBM 029 Key Punch</h2>
+<div style="margin:0 8px 8px 8px; max-width:760px">
+
+<table class="leftimage">
+<tr>
+<td>
+<a href="029b.jpg"><img
+ src="029b.jpg"
+ alt="IBM 029 Punch"
+ title="IBM 029 Punch - Click to enlarge"></a>
+<tr>
+<td class="uline"><i>Photo:</i>
+IBM 29 Card Punch Reference Manual, A24-3332-1, 1960.
+</table>
+
+<table class="leftimage" style="width:25%">
+<tr>
+<td>
+<a href="ibm029c.jpg"><img
+ src="ibm029c.jpg"
+ alt="IBM 029 card punch" 
+ title="IBM 029 card punch - Click to enlarge"></a>
+<tr>
+<td class="uline">Another view
+</table>
+
+The IBM 29 Card Punch (also called the 029 or Type 029 Key Punch or
+Keypunch), introduced about 1964 to coincide with the introduction of
+the IBM 360.  Available in nine models with various combinations of keyboard
+(12-key numeric or 64-key alphanumeric), zero insertion, printing, and
+interpreting, and also as the IBM 59 Card Verifier (for verifying that cards
+punched on the 29 were correct).
+
+<p>
+
+<table>
+<tr>
+<td>
+
+<table class="leftimage" style="width:120px">
+<tr>
+<td>
+<a href="029-12.jpg"><img
+ src="029-12.jpg"
+ alt="IBM 029 numeric keyboard"
+ title="IBM 029 numeric keyboard - Click to enlarge"></a>
+<tr>
+<td class="uline">Numeric keyboard
+</table>
+
+<table class="leftimage" style="width:120px">
+<tr>
+<td>
+<a href="029-64.jpg"><img
+ src="029-64.jpg"
+ alt="IBM 029 numeric keyboard"
+ title="IBM 029 numeric keyboard - Click to enlarge"></a>
+<tr>
+<td class="uline">Alphanumeric 
+</table>
+</table>
+
+<p class="clear">
+The alphanumeric ("combination") keyboard layout is shown in this
+diagram (Click to magnify to full size):
+
+<p>
+
+<a href="029-keys.jpg"><img
+ alt="IBM 029 alpanumeric keyboard"
+ title="IBM 029 alpanumeric keyboard"
+ style="width:100%"
+ src="029-keys.jpg"></a>
+
+<p>
+
+Here's a card punched with each of 64 characters, showing the interpretation
+across the top:
+
+<p>
+
+<a href="029-card.jpg"><img
+ alt="IBM 029 card"
+ title="IBM 029 card"
+ style="width:100%"
+ src="029-card.jpg"></a>
+
+<p>
+
+If you magnify the keyboard diagram or card image, you can see the character
+set of the 029, which is similar to ASCII but lacks lowercase letters,
+includes two special characters not in ASCII ("not
+sign"&nbsp;(<my-tt>&not;</my-tt>), needed for (e.g.) PL/I, and "cent sign"
+(<my-tt>&cent;</my-tt>), characteristic of the EBCDIC character set used by
+the IBM 360)&nbsp;[<a href="index.html#sources">52</a>] (for which the 029
+was designed), and is missing several of ASCII's other
+characters: <my-tt>{}[]\^~</my-tt>
+
+<p>
+
+This is the first version of IBM's EBCDIC (Extended Binary Coded Decimal
+Interchange Code) character set.  Although the repertoire of the 029 card
+punch is only 64 characters (sufficient to program in Fortran, PL/I, and
+Cobol), EBCDIC is an 8-bit set with a capacity of 256 characters.  As
+terminals replaced card punches for data entry, lowercase latters, control
+characters, and other characters were added in the remaining space.
+
+<p>
+<table class="leftimage">
+<tr>
+<td>
+<a href="029-drum.jpg"><img
+ src="029-drum.jpg"
+ alt="IBM 029 drum"
+ style="width:100%"
+ title="IBM 029 card program drum - Click to enlarge"></a>
+<tr>
+<td class="uline">IBM 029 program drum
+</table>
+
+The Program Drum, which allows "keyboard shortcuts" to be programmed for
+faster entry of certain kinds of data, e.g. Fortran source code, columns of
+numbers, etc.  You could put up to two programs on one program card and switch
+between with the Program Select switch.  The program defines fields to be
+automatically skipped, duplicated, or alpha-shifted.  The program card turns
+in synchrony with the progress of the card through the punching station.
+The holes in the program card are sensed by little spring-loaded levers
+with tiny toothed wheels on the end.  Heavily used key punches often had
+missing program wheels (and dry ribbons).
+
+<p class="clear">
+
+Here's a 1986 view of Columbia's last public keypunch, an 029 model (with a
+pair of DEC VT101 terminals to its left), in the picturesque
+<a href="ssio.html">SSIO Area</a>:
+
+<p>
+<a href="ssio01.jpg"><img
+ alt="CU SSIO 029"
+ title="CU SSIO 029"
+ style="width:100%; max-width:763px; border:1px solid grey"
+ src="ssio01.jpg"></a>
+<p>
+
+In 1971, IBM announced its last key punch, the 129, which was an 029 with
+buffer memory, allowing data to be entered, checked, and edited before
+committing it to the card; storing up to six different formatting
+programs (equivalent to program-drum cards); and able to accumulate counts and
+totals.  <a href="129-sm.gif">CLICK HERE</a> for a photo from a 1971 IBM
+advertisement, and <a href="129.gif">HERE</a> for a higher-resolution (2.5MB)
+scan of whole ad.
+
+<p>
+<hr>
+<i>References:</i>
+<ol>
+<li><cite>IBM 29 Card Punch Reference Manual</cite>, A24-3332-1 (February
+1965).<br>(The figures on this page come from this manual, except for the
+Columbia SSIO photo).
+<li>Mackenzie, Charles E., <cite>Coded Character Sets, History and
+Development</cite>, Addison-Wesley (1980).
+</ol>
+<p>
+<i>Also see (onsite links):</i>
+<ul>
+<li><a href="ssio.html">Columbia's SSIO Area</a>
+<li><a href="026.html">The IBM 026 Key Punch</a>
+<li><a href="oldpunch.html">Early Card Punch Machines</a>
+</ul>
+
+<p>
+<i>Offsite Links (checked 6 July 2022):</i>
+<ul>
+<li><a href="http://www-03.ibm.com/ibm/history/exhibits/vintage/vintage_4506VV4002.html">IBM
+29 card punch</a> (IBM history archive)
+
+<li><a href="http://www.math-cs.gordon.edu/courses/cs323/FORTRAN/keypunch.html">IBM
+29 Keypunch</a> illustration from <cite>FORTRAN IV Pocket Handbook</cite>.
+
+<li><a href="https://www.computerhistory.org/collections/catalog/102645821">
+Color photo from the Computer History Museum</a>
+
+<li><a href="https://upload.wikimedia.org/wikipedia/commons/e/ee/LCM_-_IBM_029_Card_Punch_01.jpg">Color
+    photo at Wikimedia Commons</a>
+
+<li>Youtube video: <a 
+href="https://www.youtube.com/watch?v=kaQmAybWn-w">Basic Operation of the
+ IBM 029 Card Punch</a> (1967), 20 minutes.
+
+<li>Film: <a
+href="https://www.youtube.com/watch?v=oaVwzYN6BP4&list=PLTtdqWIuOb6ekBQWfskfcCFJPyvjmZkKf">Punching
+Data on Cards</a>, University of Queensland Chemistry Department (1969).
+Demonstrates&nbsp;operation of IBM 029 and (briefly) 026 card punches.
+
+</ul>
+<p>
+
+<h3 style="border-top:1px solid grey"
+ id="translations">Translations of this page courtesy of...</h3>
+
+<table class="compact">
+<tr>
+<th>Language</th>
+<th>Link</th>
+<th>Date</th>
+<th>Translator</th>
+<th>Organization</th>
+<tr>
+<td>
+Norwegian
+</td>
+<td>
+<a href="https://scandicsciences.com/nb-no/the-ibm-029-key-punch/">Norsk
+(Bokmål)
+</a>
+</td>
+<td>  
+2022/07/06
+</td>
+<td>  
+Stian Skjelbred
+<td>
+<a href="http://beste-kredittkort.no/">Beste kredittkort</a>
+</tr>
+</table>
+<p>
+
+</div>
+</div>
+<table class="address"
+ style="width:100%; margin:0 0 10px 0;
+ border-bottom:1px solid grey; border-top:1px solid grey">
+<tr>
+<td style="padding-left:12px"><a href="index.html">
+<i>Columbia University Computing History</i></a>
+<td>
+Frank da Cruz / <a href="http://www.columbia.edu/~fdc/">fdc@columbia.edu</a>
+<td><i>This page created:</i>
+<span class="nofill">
+January 2001
+</span>
+<td><i>Last&nbsp;update:</i><!--(or Revised:) -->
+<span class="nofill">
+6 July 2022
+</span>
+<td style="text-align:right; vertical-align:top; padding-right:12px">
+<script>
+document.writeln('<div style="margin:0 0 0 12px">[<a \
+ href="http://validator.w3.org/check?uri=' +
+  escape(window.location.href) + '">validate<\/a>]</div>');
+</script>
+</table>
+
+</body>
+</html>
