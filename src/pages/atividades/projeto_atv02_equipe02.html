@@ -289,52 +289,82 @@
 					"episodes":39
 				}
 			],
-		"ROBOT": 
+		"mock": 
 			[
 				{
-					"id":1,
-					"name":"Rick Sanchez",
+					"id":12222,
+					"name":"macaco louco",
 					"status":"Alive",
-					"species":"Human",
+					"species":"mock",
 					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+					"image":"https://rickandmortyapi.com/api/character/avatar/122.jpeg",
 					"episodes":51
 				},
 				{
-					"id":2,
-					"name":"Morty Smith",
+					"id":2232323,
+					"name":"JAO gulo",
 					"status":"Alive",
-					"species":"Human",
+					"species":"mock",
 					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+					"image":"https://rickandmortyapi.com/api/character/avatar/124.jpeg",
 					"episodes":51
 				},
 				{
-					"id":3,
-					"name":"Summer Smith",
+					"id":2123123145,
+					"name":"wasda shaka",
 					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-					"episodes":42
-				},
-				{
-					"id":4,
-					"name":"Beth Smith",
-					"status":"Alive",
-					"species":"Human",
-					"gender":"Female",
-					"image":"https://rickandmortyapi.com/api/character/avatar/4.jpeg",
-					"episodes":42
-				},
-				{
-					"id":5,
-					"name":"Jerry Smith",
-					"status":"Alive",
-					"species":"Human",
+					"species":"mock",
 					"gender":"Male",
-					"image":"https://rickandmortyapi.com/api/character/avatar/5.jpeg",
-					"episodes":39
+					"image":"https://rickandmortyapi.com/api/character/avatar/125.jpeg",
+					"episodes":51
+				},
+				{
+					"id":215161,
+					"name":"JAO gulo",
+					"status":"Alive",
+					"species":"mock",
+					"gender":"Male",
+					"image":"https://rickandmortyapi.com/api/character/avatar/126.jpeg",
+					"episodes":51
+				}
+			]  ,
+			"mock2": 
+			[
+				{
+					"id":12222,
+					"name":"macaco louco",
+					"status":"Alive",
+					"species":"mock",
+					"gender":"Male",
+					"image":"https://rickandmortyapi.com/api/character/avatar/122.jpeg",
+					"episodes":51
+				},
+				{
+					"id":2232323,
+					"name":"JAO gulo",
+					"status":"Alive",
+					"species":"mock",
+					"gender":"Male",
+					"image":"https://rickandmortyapi.com/api/character/avatar/124.jpeg",
+					"episodes":51
+				},
+				{
+					"id":2123123145,
+					"name":"wasda shaka",
+					"status":"Alive",
+					"species":"mock",
+					"gender":"Male",
+					"image":"https://rickandmortyapi.com/api/character/avatar/125.jpeg",
+					"episodes":51
+				},
+				{
+					"id":215161,
+					"name":"JAO gulo",
+					"status":"Alive",
+					"species":"mock",
+					"gender":"Male",
+					"image":"https://rickandmortyapi.com/api/character/avatar/126.jpeg",
+					"episodes":51
 				}
 			]  
 		};
@@ -581,13 +611,17 @@
 					margin-top: 20px;
 				"
 			>
-			
-			
-			
 				`;
 
 		for (let especie in local_library) {
-			r += `<div class="bord" style="flex:1;background-color:var(--bg2);margin-top: 20px">
+			r += `<div class="bord" 
+					style="
+						flex : 1;
+						background-color : var(--bg2);
+						margin-top: 20px;
+						min-width: 380px
+						"
+					>
 				   <h2>${especie}</h2>
 				   <div  
 						style="
@@ -598,18 +632,21 @@
 							background-color: transparent"
 							height: 20px;
 							
+							
 					>
 						<input 
 							class = "in"
 							style = "
-								max-width: 120px;
+								max-width: 300px;
+								margin-top: 2px;
+								margin-bottom: 20px
 								"
 							id = "input_add_${especie}"
-							value=' '
-							placeholder="EXCLUIR ITEM!!"
+							value=''
+							placeholder="Adicionar Item"
 							>
 						</input>
-						<button class="btn" onclick="addItem('${especie}')" 
+						<button class="btn" onclick="addItem('${especie}','input_add_${especie}')" 
 							style="
 								border-radius: 20px;
 								border-width: 2px;
@@ -627,22 +664,45 @@
 
 				`;
 			let indx = 0;
-			for (let it of local_library[especie]) {
+			for (let personagem of local_library[especie]) {
 				r += `
 					<div style="
-						display: flex;
-						flex-direction: row;
-						justify-content: center;
-						background-color: transparent"
+							border : 2px solid transparent;
+							margin : 0px;
+							min-height : 20px;
+							background-color : transparent;
+						"
 					>
+					</div>
+					<div 
+						id="pers_${personagem.id}"	
+						style="
+							display: flex;
+							flex-direction: row;
+							justify-content: center;
+							background-color: var(--bg3)"
+					>
+						<div class="vcent hcent"
+							style="
+								width:70px;
+								height:70px;
+								display:flex;
+								flex-direction: row;
+								background-color:transparent
+								">
+						<img class="vcent hcent"
+							src="${personagem["image"]}"
+							style="width:50px;height:50px"
+						></img>
+						</div>
 					    <input 
-							class = "in"
+							class = "in vcent"
 							x
 							style = "
 								max-width: 120px;
 								"
 							id = "input_${especie}_${indx}"
-							value='${it["name"]}'
+							value='${personagem["name"]}'
 							placeholder="EXCLUIR ITEM!!"
 							></input>
 						<button class="btn" onclick="updateItem('${especie}',${indx},'input_${especie}_${indx}')">Update</button>
@@ -667,7 +727,8 @@
 	}
 // ==================================================
 	function updateItem(especie, index, id) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
-		let novo_nome = document.getElementById(id).value;
+		let novo_nome = document.getElementById(id).value.trim();
+		if(novo_nome.length===0) return deleteItem(especie,index,id);
 		local_library[especie][index]["name"] = novo_nome;
 	}
 	function deleteItem(especie, index, id) {//FUNÇÃO QUE FARÁ EDIÇÕES NA API
@@ -675,10 +736,20 @@
 		local_library[especie].splice(index,1);
 		show_local_library();
 	}
-	function addItem(){
-		let v = document.getElementById('input_add').value;
-		console.log('ADD ')
+	function addItem(especie,id){
+		let novo_valor = document.getElementById(id).value.trim();
+		//console.log('NV> "'+novo_valor.length+'"')
 
+		if(novo_valor.length===0) return;
+		//pegar uma imagem aleatoria
+		
+		const img = local_library[especie]
+		[parseInt(Math.random()*1000%local_library[especie].length)]
+		["image"];
+		local_library[especie].push({"name":novo_valor, "image":img});
+		
+
+		show_local_library();
 	}
 
 </script>

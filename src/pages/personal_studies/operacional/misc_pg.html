@@ -184,8 +184,8 @@
 	<title>COBOL Misc</title>
 </head>
 
-<body id="body" class="bord" style="width:95%;">
-	<div id="form_01" class="bord">
+<body id="body" class="bord" style="width:95%; ">
+	<div id="form_01" class="bord" style="visibility:hidden;">
 		<input id="cbl_in_01" class="in hcent" placeholder="control_string" type="text" style="
 				flex:1;
 				margin-top: 2px;
@@ -205,10 +205,42 @@
 				output
 			</p>
 		</div>
+
+
+
 		<div>A</div>
 		<div>A</div>
 
 	</div>
+
+	<div id="form_01" class="bord">
+		<input id="cbl_in_01" class="in hcent" placeholder="input string" type="text" style="
+				flex:1;
+				margin-top: 20px;
+				margin-bottom: 2px;
+				width: 200px;
+			"> </input>
+		<button class="btn inv hcent" style="width: 180px;margin-top: 2px;" onclick="maior_sequencia()">
+			GENERATE 2
+		</button>
+		<div class="bord hcent" style="
+				width: 80%;
+				height: 800px;
+				margin-top: 20px;
+				background-color: var(--bg2);
+				">
+			<p id="output_01" style="background-color: transparent">
+				output
+			</p>
+		</div>
+
+
+
+		<div>A</div>
+		<div>A</div>
+
+	</div>
+
 
 
 
@@ -440,13 +472,35 @@
 		if (!S.length) return;
 		for (let i = 0; S[i]; i++) {
 			console.log(' > ', S[i]);
-			
+
 
 		}
 		document.getElementById('output_01').textContent = R;
 
 	}
 
+
+	function maior_sequencia() {
+		const input = `abc abcde acegxyz`;
+		let S = input;
+		let pf = 0;
+		let word = '';
+		for (let i = 0, j = 0; S[i]; i++, j++) {
+			
+			if (S[i] === ' ' || S[i] === '\n') {
+				pf = i;
+				j=0;
+
+			}
+			word[j] = S[i];
+
+
+
+		}
+
+
+
+	}
 
 
 

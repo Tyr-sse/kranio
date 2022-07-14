@@ -45,25 +45,18 @@
            OPEN INPUT IN-FILE.
 
           002-READ.
-           DISPLAY CT '- TRYING TO READ '
+      *    DISPLAY  '- TRYING TO READ '
            ADD 1 TO CT.
 
            READ IN-FILE
             AT END
              DISPLAY 'EOF'
             NOT AT END
-             DISPLAY 'CONTINUE'
+             DISPLAY 'CONTINUE' IN-REC
              ADD 1 TO WR
            END-READ.
 
            DISPLAY STTS '|' IN-REC '|' .
-
-
-
-
-
-
-
 
           999-FIN.
            CLOSE IN-FILE.
